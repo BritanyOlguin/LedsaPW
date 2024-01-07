@@ -1,5 +1,6 @@
 <script setup>
-import SectionTitle from './SectionTitle.vue';
+import SectionTitle from '@/components/SectionTitle.vue';
+
 </script>
 
 <template>
