@@ -1,3 +1,5 @@
+<!-- Vista del Home o pagina principal -->
+
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 
