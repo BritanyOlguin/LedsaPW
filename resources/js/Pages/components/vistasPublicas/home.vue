@@ -1,5 +1,7 @@
 <script setup>
 import carruselEstructura from '../estructuras/carruselEstructura.vue';
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
 </script>
 
 

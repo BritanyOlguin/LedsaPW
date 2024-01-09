@@ -16,9 +16,7 @@ Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('home', function () {
-    return Inertia::render('components/vistasPublicas/home');
-})->name('home');
+
 
 Route::get('productos', function () {
     return Inertia::render('components/vistasPublicas/productos');
@@ -41,6 +39,10 @@ Route::get('/', [DashboardController::class, 'index']);
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 
+    Route::get('home', function () {
+        return Inertia::render('components/vistasPublicas/home');
+    })->name('home');
+
     $controllers = [
         'home' => CarruselHomeController::class,
         'productos' => ProductosController::class,
@@ -56,9 +58,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
             Route::post('editarBanner', [$controller, 'editarBanner']);
         });
     }
-
-    Route::post('/CarruselHome/bannerData', [CarruselHomeController::class, 'bannerData']);
-    Route::post('/Productos/bannerData', [ProductosController::class, 'bannerData']);
-    Route::post('/Nosotros/bannerData', [NosotrosController::class, 'bannerData']);
-    Route::post('/AvisoPrivacidad/bannerData', [AvisoPrivacidadController::class, 'bannerData']);
 });
+
+Route::post('/CarruselHome/bannerData', [CarruselHomeController::class, 'bannerData']);
+Route::post('/Productos/bannerData', [ProductosController::class, 'bannerData']);
+Route::post('/Nosotros/bannerData', [NosotrosController::class, 'bannerData']);
+Route::post('/AvisoPrivacidad/bannerData', [AvisoPrivacidadController::class, 'bannerData']);
