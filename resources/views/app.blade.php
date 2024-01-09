@@ -14,6 +14,7 @@
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
+        <link id="theme-css" rel="stylesheet" type="text/css" href="/themes/bootstrap4-light-blue/theme.css">
     </head>
     <body class="font-sans antialiased">
         @inertia

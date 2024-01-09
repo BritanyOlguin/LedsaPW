@@ -19,9 +19,8 @@ import FileUpload from 'primevue/fileupload';
 import Image from 'primevue/image';
 
 // Importar estilos
-import 'primevue/resources/themes/lara-light-green/theme.css'
-import 'primeflex/primeflex.css';
-import 'primeicons/primeicons.css';
+import "./assets/styles.scss"
+import './assets/layout/styles/theme/bootstrap4-light-blue/theme.css';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
