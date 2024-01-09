@@ -2,8 +2,8 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use Inertia\Inertia;
+use App\Http\Controllers\DashboardController;
 
 // Controladores
 use App\Http\Controllers\CarruselHomeController;
@@ -12,25 +12,23 @@ use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\AvisoPrivacidadController;
 
 // Rutas de vistas
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::get('/home', function () {
+    return Inertia::render('components/vistasPublicas/home');
+})->name('home');
 
-
-
-Route::get('productos', function () {
+Route::get('/productos', function () {
     return Inertia::render('components/vistasPublicas/productos');
 })->name('productos');
 
-Route::get('nosotros', function () {
+Route::get('/nosotros', function () {
     return Inertia::render('components/vistasPublicas/nosotros');
 })->name('nosotros');
 
-Route::get('avisoPrivacidad', function () {
+Route::get('/avisoPrivacidad', function () {
     return Inertia::render('components/vistasPublicas/avisoPrivacidad');
 })->name('avisoPrivacidad');
 
-Route::get('bolsaTrabajo', function () {
+Route::get('/bolsaTrabajo', function () {
     return Inertia::render('components/vistasPublicas/bolsaTrabajo');
 })->name('bolsaTrabajo');
 
@@ -39,9 +37,15 @@ Route::get('/', [DashboardController::class, 'index']);
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 
-    Route::get('home', function () {
-        return Inertia::render('components/vistasPublicas/home');
-    })->name('home');
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    Route::get('/homeAdmin', function () {
+        return Inertia::render('components/vistasAdmin/homeAdmin');
+    })->name('homeAdmin');
+
+    
 
     $controllers = [
         'home' => CarruselHomeController::class,

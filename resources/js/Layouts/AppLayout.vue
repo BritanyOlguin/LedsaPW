@@ -49,7 +49,7 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
-                                <NavLink :href="route('home')" :class="{ 'active': route().current('home') }">
+                                <NavLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }">
                                     Home
                                 </NavLink>
                             </div>
