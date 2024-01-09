@@ -14,6 +14,8 @@ import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import Toolbar from 'primevue/toolbar';
 import Card from 'primevue/card';
+import FileUpload from 'primevue/fileupload';
+import Image from 'primevue/image';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -36,7 +38,8 @@ createInertiaApp({
             .component('Textarea', Textarea)
             .component('Toolbar', Toolbar)
             .component('Card', Card)
-
+            .component('FileUpload', FileUpload)
+            .component('Image', Image)
             .mount(el);
     },
     progress: {
