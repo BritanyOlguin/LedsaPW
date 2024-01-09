@@ -1,3 +1,3 @@
 <template>
-    <h1>Hola publico</h1>
+    <h1>Hola Home Publico</h1>
 </template>

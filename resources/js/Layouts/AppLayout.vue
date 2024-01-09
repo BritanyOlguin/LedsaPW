@@ -49,25 +49,31 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
+                                <NavLink :href="route('dashboard')" :class="{ 'active': route().current('dashboard') }">
+                                    Dashboard
+                                </NavLink>
+                            </div>
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
                                 <NavLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }">
                                     Home
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
-                                <NavLink :href="route('productos')" class="text-gray-500 hover:text-gray-700"
-                                    :class="{ 'active': route().current('productos') }">
+                                <NavLink :href="route('productosAdmin')" class="text-gray-500 hover:text-gray-700"
+                                    :class="{ 'active': route().current('productosAdmin') }">
                                     Productos
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
-                                <NavLink :href="route('nosotros')" class="text-gray-500 hover:text-gray-700"
-                                    :class="{ 'active': route().current('nosotros') }">
+                                <NavLink :href="route('nosotrosAdmin')" class="text-gray-500 hover:text-gray-700"
+                                    :class="{ 'active': route().current('nosotrosAdmin') }">
                                     Nosotros
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
-                                <NavLink :href="route('avisoPrivacidad')" class="text-gray-500 hover:text-gray-700"
-                                    :class="{ 'active': route().current('avisoPrivacidad') }">
+                                <NavLink :href="route('avisoPrivacidadAdmin')" class="text-gray-500 hover:text-gray-700"
+                                    :class="{ 'active': route().current('avisoPrivacidadAdmin') }">
                                     Aviso de privacidad
                                 </NavLink>
                             </div>
@@ -218,9 +224,29 @@ const logout = () => {
 
                 <!-- Responsive Navigation Menu -->
                 <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="sm:hidden">
-                    <div class="pt-2 pb-3 space-y-1">
+                    <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
+                        <ResponsiveNavLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }">
+                            Home
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
+                        <ResponsiveNavLink :href="route('productosAdmin')" :class="{ 'active': route().current('productosAdmin') }">
+                            Productos
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
+                        <ResponsiveNavLink :href="route('nosotrosAdmin')" :class="{ 'active': route().current('nosotrosAdmin') }">
+                            Nosotros
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
+                        <ResponsiveNavLink :href="route('avisoPrivacidadAdmin')" :class="{ 'active': route().current('avisoPrivacidadAdmin') }">
+                            Aviso de privacidad
                         </ResponsiveNavLink>
                     </div>
 
