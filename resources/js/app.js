@@ -6,6 +6,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
+// Estilos PrimeVue
 import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
@@ -16,6 +17,11 @@ import Toolbar from 'primevue/toolbar';
 import Card from 'primevue/card';
 import FileUpload from 'primevue/fileupload';
 import Image from 'primevue/image';
+
+// Importar estilos
+import 'primevue/resources/themes/lara-light-green/theme.css'
+import 'primeflex/primeflex.css';
+import 'primeicons/primeicons.css';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
