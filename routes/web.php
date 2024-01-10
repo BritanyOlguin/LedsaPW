@@ -13,6 +13,8 @@ use App\Http\Controllers\AvisoPrivacidadController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
+Route::get('/', [DashboardController::class, 'index']);
+
 Route::get('/home', function () {
     return Inertia::render('components/vistasPublicas/home');
 })->name('home');
@@ -32,8 +34,6 @@ Route::get('/avisoPrivacidad', function () {
 Route::get('/bolsaTrabajo', function () {
     return Inertia::render('components/vistasPublicas/bolsaTrabajo');
 })->name('bolsaTrabajo');
-
-Route::get('/', [DashboardController::class, 'index']);
 
 // Rutas que incluyen el middleware de autenticación
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
