@@ -10,6 +10,7 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
 import Dialog from 'primevue/dialog';
 import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
@@ -34,6 +35,8 @@ createInertiaApp({
                 ripple: true,
                 inputStyle: "outlined",
             })
+            // Alertas emergentes de error, exito, etc
+            .use(ToastService)
             .use(ZiggyVue)
 
             .component('Button', Button)
