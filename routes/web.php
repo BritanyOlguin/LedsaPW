@@ -13,7 +13,9 @@ use App\Http\Controllers\AvisoPrivacidadController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', function () {
+    return Inertia::render('Welcome', []);
+});
 
 Route::get('/homeAdmin', function () {
     return Inertia::render('components/vistasPublicas/home');
