@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
+import { InertiaLink } from '@inertiajs/inertia-vue3';
 import ApplicationMark from '../components/ApplicationMark.vue';
 import Banner from '../components/Banner.vue';
 import Dropdown from '../components/Dropdown.vue';
@@ -49,23 +50,29 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
+                                <InertiaLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }" >Home Admin</InertiaLink>
+                            </div>
+                            <!-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
                                 <NavLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }">
                                     Home
                                 </NavLink>
-                            </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
+                            </div> -->
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
+                                v-if="$page.props.user.permissions.includes('leer registro')">
                                 <NavLink :href="route('productosAdmin')" class="text-gray-500 hover:text-gray-700"
                                     :class="{ 'active': route().current('productosAdmin') }">
                                     Productos
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
+                                v-if="$page.props.user.permissions.includes('leer registro')">
                                 <NavLink :href="route('nosotrosAdmin')" class="text-gray-500 hover:text-gray-700"
                                     :class="{ 'active': route().current('nosotrosAdmin') }">
                                     Nosotros
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
+                                v-if="$page.props.user.permissions.includes('leer registro')">
                                 <NavLink :href="route('avisoPrivacidadAdmin')" class="text-gray-500 hover:text-gray-700"
                                     :class="{ 'active': route().current('avisoPrivacidadAdmin') }">
                                     Aviso de privacidad
@@ -217,24 +224,28 @@ const logout = () => {
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="sm:hidden">
+                <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }"
+                    class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
                         <ResponsiveNavLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }">
                             Home
                         </ResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
-                        <ResponsiveNavLink :href="route('productosAdmin')" :class="{ 'active': route().current('productosAdmin') }">
+                        <ResponsiveNavLink :href="route('productosAdmin')"
+                            :class="{ 'active': route().current('productosAdmin') }">
                             Productos
                         </ResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
-                        <ResponsiveNavLink :href="route('nosotrosAdmin')" :class="{ 'active': route().current('nosotrosAdmin') }">
+                        <ResponsiveNavLink :href="route('nosotrosAdmin')"
+                            :class="{ 'active': route().current('nosotrosAdmin') }">
                             Nosotros
                         </ResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('leer registro')">
-                        <ResponsiveNavLink :href="route('avisoPrivacidadAdmin')" :class="{ 'active': route().current('avisoPrivacidadAdmin') }">
+                        <ResponsiveNavLink :href="route('avisoPrivacidadAdmin')"
+                            :class="{ 'active': route().current('avisoPrivacidadAdmin') }">
                             Aviso de privacidad
                         </ResponsiveNavLink>
                     </div>
@@ -314,26 +325,27 @@ const logout = () => {
                                                     </svg>
                                                     <div>{{ team.name }}</div>
                                                 </div>
-                                        </ResponsiveNavLink>
-                                    </form>
+                                            </ResponsiveNavLink>
+                                        </form>
+                                    </template>
                                 </template>
                             </template>
-                        </template>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <!-- Page Heading -->
-        <header v-if="$slots.header" class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <slot name="header" />
-            </div>
-        </header>
+            <!-- Page Heading -->
+            <header v-if="$slots.header" class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <slot name="header" />
+                </div>
+            </header>
 
-        <!-- Page Content -->
-        <main>
-            <slot />
-        </main>
+            <!-- Page Content -->
+            <main>
+                <slot />
+            </main>
+        </div>
     </div>
-</div></template>
+</template>

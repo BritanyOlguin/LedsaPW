@@ -14,23 +14,23 @@ const router = createRouter({
                     component: () => import('@/Pages/Dashboard.vue')
                 },
                 {
-                    path: '/home',
-                    name: 'home',
+                    path: '/homeAdmin',
+                    name: 'homeAdmin',
                     component: () => import('@/Pages/components/vistasAdmin/homeAdmin.vue'),
                 },
                 {
-                    path: '/productos',
-                    name: 'productos',
+                    path: '/productosAdmin',
+                    name: 'productosAdmin',
                     component: () => import('@/Pages/components/vistasAdmin/productosAdmin.vue')
                 },
                 {
-                    path: '/nosotros',
-                    name: 'nosotros',
+                    path: '/nosotrosAdmin',
+                    name: 'nosotrosAdmin',
                     component: () => import('@/Pages/components/vistasAdmin/nosotrosAdmin.vue')
                 },
                 {
-                    path: '/avisoPrivacidad',
-                    name: 'avisoPrivacidad',
+                    path: '/avisoPrivacidadAdmin',
+                    name: 'avisoPrivacidadAdmin',
                     component: () => import('@/Pages/components/vistasAdmin/avisoPrivacidadAdmin.vue'),
                 }
             ]
