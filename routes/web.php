@@ -15,21 +15,21 @@ use App\Http\Controllers\AvisoPrivacidadController;
 // Rutas que no incluyen el middleware de autenticación
 Route::get('/', [DashboardController::class, 'index']);
 
-Route::get('/home', function () {
+Route::get('/homeAdmin', function () {
     return Inertia::render('components/vistasPublicas/home');
-})->name('home');
+})->name('homeAdmin');
 
-Route::get('/productos', function () {
+Route::get('/productosAdmin', function () {
     return Inertia::render('components/vistasPublicas/productos');
-})->name('productos');
+})->name('productosAdmin');
 
-Route::get('/nosotros', function () {
+Route::get('/nosotrosAdmin', function () {
     return Inertia::render('components/vistasPublicas/nosotros');
-})->name('nosotros');
+})->name('nosotrosAdmin');
 
-Route::get('/avisoPrivacidad', function () {
+Route::get('/avisoPrivacidadAdmin', function () {
     return Inertia::render('components/vistasPublicas/avisoPrivacidad');
-})->name('avisoPrivacidad');
+})->name('avisoPrivacidadAdmin');
 
 Route::get('/bolsaTrabajo', function () {
     return Inertia::render('components/vistasPublicas/bolsaTrabajo');
@@ -42,7 +42,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/homeAdmin', function () {
+    /* Route::get('/homeAdmin', function () {
         return Inertia::render('components/vistasAdmin/homeAdmin');
     })->name('homeAdmin');
 
@@ -57,7 +57,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/avisoPrivacidadAdmin', function () {
         return Inertia::render('components/vistasAdmin/avisoPrivacidadAdmin');
     })->name('avisoPrivacidadAdmin');
-
+ */
     $controllers = [
         'home' => CarruselHomeController::class,
         'productos' => ProductosController::class,

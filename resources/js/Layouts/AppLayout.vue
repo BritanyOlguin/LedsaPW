@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import { Head, Link, router } from '@inertiajs/vue3';
-import { InertiaLink } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/vue3';
+// import { InertiaLink } from '@inertiajs/inertia-vue3';
 import ApplicationMark from '../components/ApplicationMark.vue';
 import Banner from '../components/Banner.vue';
 import Dropdown from '../components/Dropdown.vue';
@@ -49,14 +49,26 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
-                                <InertiaLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }" >Home Admin</InertiaLink>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <router-link to="/homeAdmin" class="{ 'active': $route.name === 'homeAdmin' }">Home</router-link>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <router-link to="/productosAdmin" class="{ 'active': $route.name === 'productosAdmin' }">Productos</router-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <router-link to="/nosotrosAdmin" class="{ 'active': $route.name === 'nosotrosAdmin' }">Nosotros</router-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <router-link to="/avisoPrivacidadAdmin" class="{ 'active': $route.name === 'avisoPrivacidadAdmin' }">Aviso de Privacidad</router-link>
+                            </div>
+                            <!-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
+                                <InertiaLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }" >Home Admin</InertiaLink>
+                            </div> -->
                             <!-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.user.permissions.includes('leer registro')">
                                 <NavLink :href="route('homeAdmin')" :class="{ 'active': route().current('homeAdmin') }">
                                     Home
                                 </NavLink>
-                            </div> -->
+                            </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
                                 v-if="$page.props.user.permissions.includes('leer registro')">
                                 <NavLink :href="route('productosAdmin')" class="text-gray-500 hover:text-gray-700"
@@ -77,7 +89,7 @@ const logout = () => {
                                     :class="{ 'active': route().current('avisoPrivacidadAdmin') }">
                                     Aviso de privacidad
                                 </NavLink>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">

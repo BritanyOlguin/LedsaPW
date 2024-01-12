@@ -1,17 +1,8 @@
 <template>
-    <div>
-        <Banner></Banner>
-        <!-- Agrega otros componentes aquí -->
+    <div id="app">
+        <router-view></router-view>
     </div>
-</template>
+</template>  
 
-<script>
-import Banner from './components/Banner.vue';
-
-export default {
-    name: 'App',
-    components: {
-        Banner
-    }
-}
+<script setup>
 </script>

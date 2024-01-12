@@ -3,6 +3,7 @@ import '../css/app.css';
 
 import { createApp, h } from 'vue';
 import router from './Router/index';
+import App from './App.vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
@@ -22,11 +23,12 @@ import Image from 'primevue/image';
 
 // Importar estilos
 import "./assets/styles.scss"
-import './assets/layout/styles/theme/bootstrap4-light-blue/theme.css';
+import './assets/layout/themes/bootstrap4-light-blue/theme.css';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
     resolve: name => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
@@ -50,6 +52,7 @@ createInertiaApp({
             .component('FileUpload', FileUpload)
             .component('Image', Image)
             .mount(el);
+        return app;
     },
     progress: {
         color: '#4B5563',
