@@ -25,10 +25,6 @@ const logoUrl = computed(() => {
 const onTopBarMenuButton = () => {
     topbarMenuActive.value = !topbarMenuActive.value;
 };
-const onSettingsClick = () => {
-    topbarMenuActive.value = false;
-    routerVue.push('/documentation');
-};
 
 const topbarMenuClasses = computed(() => {
     return {
@@ -68,7 +64,7 @@ const logout = () => {
 
 <template>
     <div class="layout-topbar">
-        <router-link to="/" class="layout-topbar-logo">
+        <router-link to="/home" class="layout-topbar-logo">
             <img :src="logoUrl" alt="logo" />
             <span>LEDSA</span>
         </router-link>
@@ -82,16 +78,6 @@ const logout = () => {
         </button>
 
         <div class="layout-topbar-menu" :class="topbarMenuClasses">
-            <router-link to="/profile">
-                <button class="p-link layout-topbar-button">
-                    <i class="pi pi-user"></i>
-                    <span>Profile</span>
-                </button>
-            </router-link>
-            <button @click="onSettingsClick()" class="p-link layout-topbar-button">
-                <i class="pi pi-cog"></i>
-                <span>Settings</span>
-            </button>
             <form @submit.prevent="logout">
                 <button type="submit" class="p-link layout-topbar-button text-red-500">
                     <i class="pi pi-power-off"></i>

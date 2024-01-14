@@ -17,21 +17,21 @@ Route::get('/', function () {
     return Inertia::render('Welcome', []);
 });
 
-Route::get('/homeAdmin', function () {
+Route::get('/home', function () {
     return Inertia::render('components/vistasPublicas/home');
-})->name('homeAdmin');
+})->name('home');
 
-Route::get('/productosAdmin', function () {
+Route::get('/productos', function () {
     return Inertia::render('components/vistasPublicas/productos');
-})->name('productosAdmin');
+})->name('productos');
 
-Route::get('/nosotrosAdmin', function () {
+Route::get('/nosotros', function () {
     return Inertia::render('components/vistasPublicas/nosotros');
-})->name('nosotrosAdmin');
+})->name('nosotros');
 
-Route::get('/avisoPrivacidadAdmin', function () {
+Route::get('/avisoPrivacidad', function () {
     return Inertia::render('components/vistasPublicas/avisoPrivacidad');
-})->name('avisoPrivacidadAdmin');
+})->name('avisoPrivacidad');
 
 Route::get('/bolsaTrabajo', function () {
     return Inertia::render('components/vistasPublicas/bolsaTrabajo');
@@ -44,22 +44,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    /* Route::get('/homeAdmin', function () {
-        return Inertia::render('components/vistasAdmin/homeAdmin');
-    })->name('homeAdmin');
-
-    Route::get('/productosAdmin', function () {
-        return Inertia::render('components/vistasAdmin/productosAdmin');
-    })->name('productosAdmin');
-
-    Route::get('/nosotrosAdmin', function () {
-        return Inertia::render('components/vistasAdmin/nosotrosAdmin');
-    })->name('nosotrosAdmin');
-
-    Route::get('/avisoPrivacidadAdmin', function () {
-        return Inertia::render('components/vistasAdmin/avisoPrivacidadAdmin');
-    })->name('avisoPrivacidadAdmin');
- */
+    // Rutas de los controladores
     $controllers = [
         'home' => CarruselHomeController::class,
         'productos' => ProductosController::class,

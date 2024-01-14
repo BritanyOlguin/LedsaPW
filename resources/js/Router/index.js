@@ -8,23 +8,23 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes: [
         {
-            path: '/homeAdmin',
-            name: 'homeAdmin',
+            path: '/home',
+            name: 'home',
             component: HomeAdmin,
         },
         {
-            path: '/productosAdmin',
-            name: 'productosAdmin',
+            path: '/productos',
+            name: 'productos',
             component: ProductosAdmin,
         },
         {
-            path: '/nosotrosAdmin',
-            name: 'nosotrosAdmin',
+            path: '/nosotros',
+            name: 'nosotros',
             component: NosotrosAdmin,
         },
         {
-            path: '/avisoPrivacidadAdmin',
-            name: 'avisoPrivacidadAdmin',
+            path: '/avisoPrivacidad',
+            name: 'avisoPrivacidad',
             component: AvisoPrivacidadAdmin,
         },
         {
