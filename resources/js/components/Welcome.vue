@@ -1,7 +1,6 @@
 <!-- Vista del Dashboard (Admin) -->
 
 @<script setup>
-import ApplicationLogo from '@/components/ApplicationLogo.vue';
 </script>
 
 <template>

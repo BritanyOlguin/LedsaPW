@@ -1,0 +1,177 @@
+<script>
+import TabMenu from 'primevue/tabmenu';
+import { onMounted, onBeforeUnmount } from 'vue';
+
+export default {
+    components: {
+        TabMenu
+    },
+    data() {
+        return {
+            items: [
+                { label: 'Productos', icon: 'pi pi-list' },
+                { label: 'Bolsa de trabajo', icon: 'pi pi-inbox' },
+                { label: 'Nosotros', icon: 'pi pi-user' }
+            ],
+            logoUrl: '/storage/imgEstaticas/logoLedsa.jpg',
+            mobileMenuActive: false
+        }
+    },
+    methods: {
+        toggleMobileMenu() {
+            if (window.innerWidth > 468) {
+                return;
+            }
+            this.mobileMenuActive = !this.mobileMenuActive;
+        },
+        handleResize() {
+            if (window.innerWidth > 468 && this.mobileMenuActive) {
+                this.mobileMenuActive = false;
+            }
+        }
+    },
+    mounted() {
+        window.addEventListener('resize', this.handleResize);
+    },
+    beforeUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+}
+</script>
+
+<template>
+    <div class="card">
+        <div class="container">
+            <div class="content">
+                <img :src="logoUrl" alt="LEDSA" class="logo" />
+                <!-- Menu para pantallas grandes -->
+                <TabMenu :model="items" class="estilos-tabmenu desktop-menu" />
+                <!-- Menu para pantallas pequeñas -->
+                <button class="mobile-menu-button" @click="toggleMobileMenu">
+                    <i class="pi pi-bars icon-large"></i>
+                </button>
+            </div>
+        </div>
+        <div v-if="mobileMenuActive" class="full-screen-menu">
+            <button class="close-button" @click="toggleMobileMenu">
+                <i class="pi pi-times icon-large"></i>
+            </button>
+            <ul class="menu-items">
+                <li v-for="item in items" :key="item.label">
+                    <i :class="item.icon"></i>
+                    {{ item.label }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
+
+<style>
+.container {
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 800px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para pantallas grandes */
+.desktop-menu {
+    display: block;
+}
+
+.estilos-tabmenu .p-tabmenu-nav li {
+    margin-right: 50px;
+}
+
+.estilos-tabmenu .p-tabmenu-nav li a:hover {
+    color: orange;
+}
+
+.logo {
+    width: 70px;
+    height: auto;
+    margin-right: 100px;
+}
+
+/* Estilos para pantallas pequeñas */
+.icon-large {
+    font-size: 20px;
+}
+
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.full-screen-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Opacidad al 50% */
+    z-index: 1001;
+}
+
+.full-screen-menu .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.full-screen-menu .menu-items {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.full-screen-menu .menu-items li {
+    padding: 15px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.full-screen-menu .menu-items li:hover {
+    color: orange;
+}
+
+.full-screen-menu .menu-items i {
+    margin-right: 10px;
+}
+
+
+/* Estilos responsivos */
+@media (max-width: 468px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .logo {
+        width: 50px;
+        height: auto;
+        margin-right: 200px;
+    }
+}
+</style>

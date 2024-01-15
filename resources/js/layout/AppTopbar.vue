@@ -19,7 +19,7 @@ onBeforeUnmount(() => {
 });
 
 const logoUrl = computed(() => {
-    return `assets/layout/images/${layoutConfig.darkTheme.value ? 'logo-white' : 'logo-dark'}.svg`;
+    return `/storage/imgEstaticas/logoLedsa.jpg`;
 });
 
 const onTopBarMenuButton = () => {
@@ -64,7 +64,7 @@ const logout = () => {
 
 <template>
     <div class="layout-topbar">
-        <router-link to="/home" class="layout-topbar-logo">
+        <router-link to="/" class="layout-topbar-logo">
             <img :src="logoUrl" alt="logo" />
             <span>LEDSA</span>
         </router-link>
