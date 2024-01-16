@@ -7,9 +7,6 @@ export default {
     components: {
         Galleria
     },
-    props: {
-        controllerName: String
-    },
     mounted() {
         this.cargarBanner();
     },
@@ -36,6 +33,8 @@ export default {
         return {
             banner: null,
             isBannerLoaded: false,
+            autoplayInterval: 6000, // Cambia a 6000 para que sean 6 segundos
+            autoplay: true,
             responsiveOptions: [
                 {
                     breakpoint: '991px',
@@ -57,8 +56,8 @@ export default {
 
 <template>
     <div class="full-width-card">
-        <Galleria v-if="isBannerLoaded" :value="banner" :responsiveOptions="responsiveOptions" :numVisible="5"
-            :circular="true" containerStyle="width: 100%;" :showItemNavigators="true" :showThumbnails="false">
+        <Galleria v-if="isBannerLoaded" :value="banner" :responsiveOptions="responsiveOptions" :numVisible="5" :circular="true" containerStyle="width: 100%;" :showItemNavigators="true"
+            :showThumbnails="false">
             <template #item="slotProps">
                 <img :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" class="carousel-image" />
             </template>
@@ -75,6 +74,12 @@ export default {
     width: 100%;
     object-fit: cover;
     display: block;
+}
+
+.p-galleria .p-galleria-item-nav {
+    color: orange;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
 }
 
 /* Estilos para pantallas grandes */
@@ -97,5 +102,4 @@ export default {
     .carousel-image {
         height: 600%;
     }
-}
-</style>
+}</style>

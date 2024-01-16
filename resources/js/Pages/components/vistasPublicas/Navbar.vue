@@ -128,7 +128,6 @@ export default {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Opacidad al 50% */
     z-index: 1001;
 }
 
@@ -174,13 +173,13 @@ export default {
 
     .mobile-menu-button {
         display: block;
-        order: 1; /* Posiciona el botón al principio */
+        order: 1;
     }
 
     .logo {
         width: 50px;
         height: auto;
-        order: -1; /* Posiciona el logo al final */
+        order: -1;
     }
 }
 </style>
