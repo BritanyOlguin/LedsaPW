@@ -67,6 +67,13 @@ export default {
 </template>
 
 <style>
+.card {
+    margin: auto;
+    padding: 1rem;
+    max-height: 150px;
+    width: 100%;
+}
+
 .container {
     margin: 0 auto;
     padding: 1rem;
@@ -76,6 +83,7 @@ export default {
 .content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 /* Estilos para pantallas grandes */
@@ -166,12 +174,13 @@ export default {
 
     .mobile-menu-button {
         display: block;
+        order: 1; /* Posiciona el botón al principio */
     }
 
     .logo {
         width: 50px;
         height: auto;
-        margin-right: 200px;
+        order: -1; /* Posiciona el logo al final */
     }
 }
 </style>

@@ -56,15 +56,46 @@ export default {
 </script>
 
 <template>
-    <div class="card">
+    <div class="full-width-card">
         <Galleria v-if="isBannerLoaded" :value="banner" :responsiveOptions="responsiveOptions" :numVisible="5"
-            :circular="true" containerStyle="max-width: 640px" :showItemNavigators="true" :showThumbnails="false">
+            :circular="true" containerStyle="width: 100%;" :showItemNavigators="true" :showThumbnails="false">
             <template #item="slotProps">
-                <img :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" style="width: 100%; display: block;" />
-            </template>
-            <template #thumbnail="slotProps">
-                <img :src="slotProps.item.thumbnailImageSrc" :alt="slotProps.item.alt" style="display: block;" />
+                <img :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" class="carousel-image" />
             </template>
         </Galleria>
     </div>
 </template>
+
+<style>
+.full-width-card {
+    width: 100%;
+}
+
+.carousel-image {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 469px) {
+    .full-width-card {
+        height: 460px;
+    }
+
+    .carousel-image {
+        height: 460px;
+    }
+}
+
+/* Estilos para teléfonos móviles */
+@media (max-width: 468px) {
+    .full-width-card {
+        height: 600%;
+    }
+
+    .carousel-image {
+        height: 600%;
+    }
+}
+</style>
