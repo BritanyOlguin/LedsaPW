@@ -4,7 +4,6 @@ import home from './components/vistasPublicas/home.vue';
 </script>
 
 <template>
-    <Head title="Welcome" />
     <Navbar />
     <home />
 </template>
