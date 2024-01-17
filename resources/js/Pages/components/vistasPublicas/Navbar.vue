@@ -70,7 +70,7 @@ export default {
 .card {
     margin: auto;
     padding: 1rem;
-    max-height: 150px;
+    max-height: 130px;
     width: 100%;
 }
 
@@ -96,7 +96,7 @@ export default {
 }
 
 .estilos-tabmenu .p-tabmenu-nav li a:hover {
-    color: orange;
+    color: #f07c34;
 }
 
 .logo {
@@ -157,7 +157,7 @@ export default {
 }
 
 .full-screen-menu .menu-items li:hover {
-    color: orange;
+    color: #f07c34;
 }
 
 .full-screen-menu .menu-items i {
