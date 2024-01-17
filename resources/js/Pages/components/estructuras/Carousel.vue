@@ -134,8 +134,8 @@ export default {
         border-radius: 50%;
         width: 40px;
         height: 40px;
-        background-color: black;
-        color: white;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #ffa500;
     }
 }
 
@@ -158,7 +158,7 @@ export default {
     }
 
     .active {
-        background-color: #23356A;
+        background-color: #ffa500;
     }
 
     // Para pantallas pequeñas
