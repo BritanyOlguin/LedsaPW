@@ -2,17 +2,6 @@
 <template>
     <div class="carousel" ref="rootRef">
         <slot :currentSlide="currentSlide" />
-
-        <!-- Navegation -->
-        <div v-if="navEnabled" class="navigate">
-            <div class="toogle-page left">
-                <i @click="prevSlide" class="pi pi-arrow-left"></i>
-            </div>
-            <div class="toogle-page right">
-                <i @click="nextSlide" class="pi pi-arrow-right"></i>
-            </div>
-        </div>
-
         <!-- Pagination -->
         <div v-if="paginationEnabled && getSlideCount > 1" class="pagination">
             <span @click="goToSlide(index)" v-for="(slide, index) in getSlideCount" :key="index" :class="{ active: index + 1 === currentSlide }">
@@ -36,10 +25,6 @@ export default {
             type: Number,
             default: 5000
         },
-        navigation: {
-            type: Boolean,
-            default: true
-        },
         pagination: {
             type: Boolean,
             default: true
@@ -56,7 +41,6 @@ export default {
         const autoPlayEnabled = ref(props.startAutoPlay);
         const timeoutDuration = ref(props.timeout);
         const paginationEnabled = ref(props.pagination);
-        const navEnabled = ref(props.navigation);
         const nextSlide = () => {
             updateSlideCount();
             if (currentSlide.value === getSlideCount.value) {
@@ -102,43 +86,12 @@ export default {
             });
         });
 
-        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled, navEnabled };
+        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled};
     }
 }
 </script>
 
 <style lang="scss">
-.navigate {
-    padding: 0 16px;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .toogle-page {
-        display: flex;
-        flex: 1;
-    }
-
-    .right {
-        justify-content: flex-end;
-    }
-
-    i {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        background-color: rgba(0, 0, 0, 0.4);
-        color: #ffa500;
-    }
-}
-
 .pagination {
     position: absolute;
     bottom: 10px;

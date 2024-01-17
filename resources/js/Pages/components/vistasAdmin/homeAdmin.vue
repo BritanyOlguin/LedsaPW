@@ -13,7 +13,6 @@ export default {
     },
     methods: {
         updateCarouselSettings(settings) {
-            this.navigation = settings.navigation;
             this.pagination = settings.pagination;
             this.startAutoPlay = settings.startAutoPlay;
             this.timeout = settings.timeout;
