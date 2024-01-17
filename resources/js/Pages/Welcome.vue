@@ -5,5 +5,5 @@ import home from './components/vistasPublicas/home.vue';
 
 <template>
     <Navbar />
-    <home />
+    <home :controllerName="'/CarruselHome/bannerData'" />
 </template>
