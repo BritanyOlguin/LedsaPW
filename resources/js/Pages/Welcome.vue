@@ -5,5 +5,14 @@ import home from './components/vistasPublicas/home.vue';
 
 <template>
     <Navbar />
+    <div class="orange-stripe"></div>
     <home />
+    <div class="orange-stripe"></div>
 </template>
+
+<style>
+.orange-stripe {
+    background-color: #f07c34;
+    height: 30px;
+    width: 100%;
+}</style>

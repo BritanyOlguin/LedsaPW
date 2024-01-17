@@ -77,7 +77,7 @@ export default {
 }
 
 .p-galleria .p-galleria-item-nav {
-    color: orange;
+    color: #f07c34;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
 }
