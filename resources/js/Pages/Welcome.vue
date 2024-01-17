@@ -1,13 +1,15 @@
 <script setup>
 import Navbar from './components/vistasPublicas/Navbar.vue';
 import home from './components/vistasPublicas/home.vue';
+import Footer from './components/vistasPublicas/footer.vue';
 </script>
 
 <template>
     <Navbar />
     <div class="orange-stripe"></div>
     <home />
-    <div class="orange-stripe"></div>
+    <!-- <div class="orange-stripe"></div> -->
+    <Footer />
 </template>
 
 <style>
