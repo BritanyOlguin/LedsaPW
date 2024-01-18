@@ -111,7 +111,7 @@ export default {
     }
 
     .active {
-        background-color: #ffa500;
+        background-color: #f07c34;
     }
 
     // Para pantallas pequeñas
