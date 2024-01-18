@@ -10,6 +10,7 @@ use App\Http\Controllers\CarruselHomeController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\AvisoPrivacidadController;
+use App\Http\Controllers\CardProductosController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
@@ -50,7 +51,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'home' => CarruselHomeController::class,
         'productos' => ProductosController::class,
         'nosotros' => NosotrosController::class,
-        'avisoPrivacidad' => AvisoPrivacidadController::class
+        'avisoPrivacidad' => AvisoPrivacidadController::class,
+        'CardProductos' => CardProductosController::class
     ];
 
     foreach ($controllers as $prefix => $controller) {
@@ -67,3 +69,4 @@ Route::post('/CarruselHome/bannerData', [CarruselHomeController::class, 'bannerD
 Route::post('/Productos/bannerData', [ProductosController::class, 'bannerData']);
 Route::post('/Nosotros/bannerData', [NosotrosController::class, 'bannerData']);
 Route::post('/AvisoPrivacidad/bannerData', [AvisoPrivacidadController::class, 'bannerData']);
+Route::post('/CardProductos/bannerData', [CardProductosController::class, 'bannerData']);

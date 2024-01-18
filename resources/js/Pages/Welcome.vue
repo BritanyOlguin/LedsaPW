@@ -2,6 +2,7 @@
 import Navbar from './components/vistasPublicas/Navbar.vue';
 import home from './components/vistasPublicas/home.vue';
 import Footer from './components/vistasPublicas/Footer.vue';
+import cardsHome from './components/vistasPublicas/cardsHome.vue';
 </script>
 
 <template>
@@ -9,6 +10,8 @@ import Footer from './components/vistasPublicas/Footer.vue';
     <div class="orange-stripe"></div>
     <home :controllerName="'/CarruselHome/bannerData'" />
     <div class="orange-stripe"></div>
+    <br>
+    <cardsHome />
     <br>
     <Footer />
 </template>
