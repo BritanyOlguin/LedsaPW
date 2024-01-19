@@ -4,7 +4,8 @@
         <slot :currentSlide="currentSlide" />
         <!-- Pagination -->
         <div v-if="paginationEnabled && getSlideCount > 1" class="pagination">
-            <span @click="goToSlide(index)" v-for="(slide, index) in getSlideCount" :key="index" :class="{ active: index + 1 === currentSlide }">
+            <span @click="goToSlide(index)" v-for="(slide, index) in getSlideCount" :key="index"
+                :class="{ active: index + 1 === currentSlide }">
             </span>
         </div>
 
@@ -86,7 +87,7 @@ export default {
             });
         });
 
-        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled};
+        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled };
     }
 }
 </script>
@@ -112,6 +113,11 @@ export default {
 
     .active {
         background-color: #f07c34;
+    }
+
+    /* Ocultar la paginación en pantallas menores a 468px */
+    @media (max-width: 468px) {
+        display: none;
     }
 
     // Para pantallas pequeñas
