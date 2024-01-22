@@ -192,4 +192,10 @@ export default {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
 }
+
+@media (max-width: 468px) {
+    .p-dataview-layout-options {
+        display: none; /* Ocultar opciones de reacomodo en móviles */
+    }
+}
 </style>
