@@ -64,7 +64,7 @@ export default {
     </div>
     <h1>PRODUCTOS</h1>
 
-    <DataView :value="products" :layout="layout">
+    <DataView  v-if="products.length > 0" :value="products" :layout="layout">
         <template #header>
             <div class="flex justify-content-end">
                 <DataViewLayoutOptions v-model="layout" />
