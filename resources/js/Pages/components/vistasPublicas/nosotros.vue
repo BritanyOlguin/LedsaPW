@@ -1,3 +1,7 @@
+<script setup>
+import Navbar from './Navbar.vue';
+</script>
+
 <template>
-    <h1>Hola Nosotros Publico</h1>
+    <Navbar />
 </template>

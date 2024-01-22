@@ -5,14 +5,26 @@ export default {
     components: {
         TabMenu
     },
+    setup() {
+        const items = [
+            { label: 'Home', icon: 'pi pi-fw pi-home', to: '/' },
+            { label: 'Productos', icon: 'pi pi-list', to: '/productos' },
+            { label: 'Bolsa de trabajo', icon: 'pi pi-inbox' },
+            { label: 'Nosotros', icon: 'pi pi-user', to: '/nosotros' },
+        ];
+
+        const onTabChange = (event) => {
+            const selectedItem = items[event.index];
+            if (selectedItem && selectedItem.to) {
+                window.location.href = selectedItem.to;
+            } else if (selectedItem.label === 'Bolsa de trabajo') {
+                window.open('https://ledsa-industrial.pandape.computrabajo.com/', '_blank');
+            }
+        };
+        return { items, onTabChange };
+    },
     data() {
         return {
-            items: [
-                { label: 'Home', icon: 'pi pi-fw pi-home', to: '/' },
-                { label: 'Productos', icon: 'pi pi-list', to: '/productos' },
-                { label: 'Bolsa de trabajo', icon: 'pi pi-inbox' },
-                { label: 'Nosotros', icon: 'pi pi-user', to: '/nosotros' }
-            ],
             logoUrl: '/storage/imgEstaticas/logoLedsa.jpg',
             mobileMenuActive: false
         }
@@ -29,9 +41,6 @@ export default {
                 this.mobileMenuActive = false;
             }
         },
-        redirectTo(route) {
-            this.$router.push(route);
-        }
     },
     mounted() {
         window.addEventListener('resize', this.handleResize);
@@ -48,7 +57,7 @@ export default {
             <div class="content">
                 <img :src="logoUrl" alt="LEDSA" class="logo" />
                 <!-- Menu para pantallas grandes -->
-                <TabMenu :model="items" class="estilos-tabmenu desktop-menu" @tab-change="redirectTo($event.value.to)" />
+                <TabMenu :model="items" class="estilos-tabmenu desktop-menu" @tab-change="onTabChange" />
                 <!-- Menu para pantallas pequeñas -->
                 <button class="mobile-menu-button" @click="toggleMobileMenu">
                     <i class="pi pi-bars icon-large"></i>
@@ -60,7 +69,7 @@ export default {
                 <i class="pi pi-times icon-large"></i>
             </button>
             <ul class="menu-items">
-                <li v-for="item in items" :key="item.label" @click="redirectTo(item.to)">
+                <li v-for="(item, index) in items" :key="index" @click="() => onTabChange({ index })">
                     <i :class="item.icon"></i>
                     {{ item.label }}
                 </li>
