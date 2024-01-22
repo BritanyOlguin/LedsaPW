@@ -14,7 +14,7 @@ export default {
     },
     setup() {
         const products = ref([]);
-        const layout = ref('grid');
+        const layout = ref('list');
 
         const cargarBanner = async () => {
             try {
@@ -64,10 +64,10 @@ export default {
     </div>
     <h1>PRODUCTOS</h1>
 
-    <DataView  v-if="products.length > 0" :value="products" :layout="layout">
+    <DataView v-if="products.length > 0" :value="products" :layout="layout">
         <template #header>
             <div class="flex justify-content-end">
-                <DataViewLayoutOptions v-model="layout" />
+                <DataViewLayoutOptions v-model="layout"/>
             </div>
         </template>
 
@@ -75,7 +75,7 @@ export default {
             <div class="grid grid-nogutter">
                 <div v-for="item in items" :key="item.id" @click="openPDFModal(item.pdf, item.nombre)" class="col-12">
                     <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4"
-                        :class="{ 'border-top-1 surface-border': index !== 0 }">
+                        :class="{ 'border-top-1 surface-border': item.id !== 0 }">
                         <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
                             :src="'/storage/' + item.imagen" :alt="item.nombre" />
                         <div
