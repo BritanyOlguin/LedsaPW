@@ -5,31 +5,29 @@ export default {
     components: {
         TabMenu
     },
-    setup() {
-        const items = [
-            { label: 'Home', icon: 'pi pi-fw pi-home', to: '/' },
-            { label: 'Productos', icon: 'pi pi-list', to: '/productos' },
-            { label: 'Bolsa de trabajo', icon: 'pi pi-inbox' },
-            { label: 'Nosotros', icon: 'pi pi-user', to: '/nosotros' },
-        ];
-
-        const onTabChange = (event) => {
-            const selectedItem = items[event.index];
+    data() {
+        return {
+            currentPath: window.location.pathname, // Ruta actual
+            logoUrl: '/storage/imgEstaticas/logoLedsa.jpg',
+            mobileMenuActive: false,
+            items: [
+                { label: 'Home', icon: 'pi pi-fw pi-home', to: '/' },
+                { label: 'Productos', icon: 'pi pi-list', to: '/productos' },
+                { label: 'Bolsa de trabajo', icon: 'pi pi-inbox' },
+                { label: 'Nosotros', icon: 'pi pi-user', to: '/nosotros' },
+            ],
+        };
+    },
+    methods: {
+        onTabChange(event) {
+            const selectedItem = this.items[event.index];
             if (selectedItem && selectedItem.to) {
                 window.location.href = selectedItem.to;
+                this.currentPath = selectedItem.to; // Actualiza la ruta actual
             } else if (selectedItem.label === 'Bolsa de trabajo') {
                 window.open('https://ledsa-industrial.pandape.computrabajo.com/', '_blank');
             }
-        };
-        return { items, onTabChange };
-    },
-    data() {
-        return {
-            logoUrl: '/storage/imgEstaticas/logoLedsa.jpg',
-            mobileMenuActive: false
-        }
-    },
-    methods: {
+        },
         toggleMobileMenu() {
             if (window.innerWidth > 768) {
                 return;
@@ -57,7 +55,14 @@ export default {
             <div class="content">
                 <img :src="logoUrl" alt="LEDSA" class="logo" />
                 <!-- Menu para pantallas grandes -->
-                <TabMenu :model="items" class="estilos-tabmenu desktop-menu" @tab-change="onTabChange" />
+                <TabMenu :model="items" class="estilos-tabmenu desktop-menu" @tab-change="onTabChange">
+                    <template v-slot:item="slotProps">
+                        <li :class="{ active: currentPath === slotProps.item.to }">
+                            <i :class="slotProps.item.icon"></i>
+                            {{ slotProps.item.label }}
+                        </li>
+                    </template>
+                </TabMenu>
                 <!-- Menu para pantallas pequeñas -->
                 <button class="mobile-menu-button" @click="toggleMobileMenu">
                     <i class="pi pi-bars icon-large"></i>
@@ -69,7 +74,7 @@ export default {
                 <i class="pi pi-times icon-large"></i>
             </button>
             <ul class="menu-items">
-                <li v-for="(item, index) in items" :key="index" @click="() => onTabChange({ index })">
+                <li v-for="(item, index) in items" :key="index" @click="() => onTabChange({ index })" >
                     <i :class="item.icon"></i>
                     {{ item.label }}
                 </li>
@@ -77,6 +82,8 @@ export default {
         </div>
     </div>
 </template>
+
+<style>
 
 <style>
 .card {
@@ -139,7 +146,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: 1001;
 }
 
@@ -174,6 +181,11 @@ export default {
 
 .full-screen-menu .menu-items i {
     margin-right: 10px;
+}
+
+.estilos-tabmenu li.active {
+    border-bottom: 3px solid #f07c34; /* Línea debajo del elemento activo */
+    color: #f07c34; /* Color del texto del elemento activo */
 }
 
 
