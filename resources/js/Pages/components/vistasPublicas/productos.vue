@@ -1,6 +1,7 @@
 <script>
 import Navbar from './Navbar.vue';
 import Footer from './Footer.vue';
+import ImgProductos from './ImgProductos.vue';
 import { ref } from 'vue';
 import DataView from 'primevue/dataview';
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions';
@@ -11,10 +12,11 @@ export default {
         Footer,
         DataView,
         DataViewLayoutOptions,
+        ImgProductos,
     },
     setup() {
         const products = ref([]);
-        const layout = ref('list');
+        const layout = ref('grid');
 
         const cargarBanner = async () => {
             try {
@@ -62,7 +64,8 @@ export default {
             </div>
         </div>
     </div>
-    <h1>PRODUCTOS</h1>
+    
+    <ImgProductos />
 
     <DataView v-if="products.length > 0" :value="products" :layout="layout">
         <template #header>
@@ -193,9 +196,18 @@ export default {
     gap: 1rem;
 }
 
+.tittle {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    background-color: #f07c34;
+    margin-top: 0px;
+}
+
 @media (max-width: 468px) {
     .p-dataview-layout-options {
-        display: none; /* Ocultar opciones de reacomodo en móviles */
+        display: none;
     }
 }
 </style>

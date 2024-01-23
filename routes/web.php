@@ -12,6 +12,7 @@ use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\AvisoPrivacidadController;
 use App\Http\Controllers\CardProductosController;
 use App\Http\Controllers\CardBolsaTrabajoController;
+use App\Http\Controllers\ImgProductosController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
@@ -54,7 +55,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'nosotros' => NosotrosController::class,
         'avisoPrivacidad' => AvisoPrivacidadController::class,
         'CardProductos' => CardProductosController::class,
-        'CardBolsaTrabajo' => CardBolsaTrabajoController::class
+        'CardBolsaTrabajo' => CardBolsaTrabajoController::class,
+        'ImgProductos' => ImgProductosController::class
     ];
 
     foreach ($controllers as $prefix => $controller) {
@@ -73,3 +75,4 @@ Route::post('/Nosotros/bannerData', [NosotrosController::class, 'bannerData']);
 Route::post('/AvisoPrivacidad/bannerData', [AvisoPrivacidadController::class, 'bannerData']);
 Route::post('/CardProductos/bannerData', [CardProductosController::class, 'bannerData']);
 Route::post('/CardBolsaTrabajo/bannerData', [CardBolsaTrabajoController::class, 'bannerData']);
+Route::post('/ImgProductos/bannerData', [ImgProductosController::class, 'bannerData']);

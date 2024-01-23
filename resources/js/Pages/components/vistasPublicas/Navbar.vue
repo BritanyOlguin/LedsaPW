@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         toggleMobileMenu() {
-            if (window.innerWidth > 468) {
+            if (window.innerWidth > 768) {
                 return;
             }
             this.mobileMenuActive = !this.mobileMenuActive;
@@ -178,7 +178,7 @@ export default {
 
 
 /* Estilos responsivos */
-@media (max-width: 468px) {
+@media (max-width: 800px) {
     .desktop-menu {
         display: none;
     }
