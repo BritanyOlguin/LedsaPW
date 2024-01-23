@@ -85,9 +85,8 @@ export default {
 
 <style>
 
-<style>
 .card {
-    margin: auto;
+    margin: 0;
     padding: 1rem;
     max-height: 130px;
     width: 100%;
@@ -184,8 +183,8 @@ export default {
 }
 
 .estilos-tabmenu li.active {
-    border-bottom: 3px solid #f07c34; /* Línea debajo del elemento activo */
-    color: #f07c34; /* Color del texto del elemento activo */
+    border-bottom: 3px solid #f07c34;
+    color: #f07c34;
 }
 
 
