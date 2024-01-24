@@ -44,15 +44,18 @@ export default {
     },
     mounted() {
         this.cargarBanner();
-        window.addEventListener('resize', this.handleResize);
+        window.addEventListener('resize', this.handleResize, this.checkMobile);
         this.handleResize();
     },
     beforeDestroy() {
-        window.removeEventListener('resize', this.handleResize);
+        window.removeEventListener('resize', this.handleResize, this.checkMobile);
     },
     methods: {
         handleResize() {
             this.$forceUpdate();
+        },
+        checkMobile() {
+            this.isMobile = window.innerWidth <= 500;
         },
         cargarBanner() {
             axios.post(this.loadDataUrl).then((response) => {
@@ -196,6 +199,7 @@ export default {
     },
     data() {
         return {
+            isMobile: window.innerWidth <= 500,
             banner: [],
             searchQuery: '',
             nombre: null,
@@ -255,7 +259,7 @@ export default {
                     <InputText inputId="minmax" v-model="nombre" :min="0" :max="10000" :showButtons="true" />
                 </div>
 
-                <div v-if="pdfPreview" class="pdf-preview">
+                <div v-if="pdfPreview && !isMobile" class="pdf-preview">
                     <embed :src="pdfPreview" type="application/pdf" width="100%" height="500px">
                 </div>
 
@@ -296,7 +300,7 @@ export default {
                     <InputText inputId="minmax" v-model="datosArreglo.nombre" :min="0" :max="10000" :showButtons="true" />
                 </div>
                 <div class="field col-12 md:col-12">
-                    <div v-if="pdfPreview" class="pdf-preview">
+                    <div v-if="!isMobile" class="pdf-preview">
                         <embed :src="pdfPreview" type="application/pdf" width="100%" height="500px">
                     </div>
 

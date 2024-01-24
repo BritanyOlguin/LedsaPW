@@ -46,15 +46,19 @@ export default {
     mounted() {
         this.cargarBanner();
         this.cargarTexto();
-        window.addEventListener('resize', this.handleResize);
+        window.addEventListener('resize', this.handleResize, this.checkMobile);
         this.handleResize();
+        this.checkMobile();
     },
     beforeDestroy() {
-        window.removeEventListener('resize', this.handleResize);
+        window.removeEventListener('resize', this.handleResize, this.checkMobile);
     },
     methods: {
         handleResize() {
             this.$forceUpdate();
+        },
+        checkMobile() {
+            this.isMobile = window.innerWidth <= 500;
         },
         cargarTexto() {
             axios.post(this.loadDataUrl).then((response) => {
@@ -320,6 +324,7 @@ export default {
     },
     data() {
         return {
+            isMobile: window.innerWidth <= 500,
             banner: [],
             searchQuery: '',
             nombre: null,
@@ -404,7 +409,7 @@ export default {
                         @change="handleFileUpload">
                 </div>
 
-                <div v-if="pdfPreview" class="pdf-preview">
+                <div v-if="pdfPreview && !isMobile" class="pdf-preview">
                     <embed :src="pdfPreview" type="application/pdf" width="100%" height="500px">
                 </div>
 
@@ -462,7 +467,7 @@ export default {
                     <input ref="photoInput" type="file" accept=".jpg,.jpeg,.png,.svg" class="hidden"
                         @change="handleFileUploadEdit">
 
-                    <div v-if="pdfPreview" class="pdf-preview">
+                    <div v-if="!isMobile" class="pdf-preview">
                         <embed :src="pdfPreview" type="application/pdf" width="100%" height="500px">
                     </div>
 
