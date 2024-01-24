@@ -34,12 +34,26 @@ export default {
             return this.banner.filter(item =>
                 item.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
             );
+        },
+        dialogStyle() {
+            if (window.innerWidth <= 500) {
+                return { width: '100vw', height: '100vh' };
+            }
+            return { width: '25vw' };
         }
     },
     mounted() {
         this.cargarBanner();
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize);
     },
     methods: {
+        handleResize() {
+            this.$forceUpdate();
+        },
         cargarBanner() {
             axios.post(this.loadDataUrl).then((response) => {
                 this.banner = response.data;
@@ -231,8 +245,7 @@ export default {
     </div>
 
     <Toast />
-    <Dialog v-model:visible="dialogTable" :breakpoits="{ '960px': '75vw', '640px': '85vw' }" :style="{ width: '25vw' }"
-        header="Nuevo Registro" :modal="true" class="p-fluid">
+    <Dialog v-model:visible="dialogTable" :style="dialogStyle" header="Nuevo Registro" :modal="true" class="p-fluid">
         <div class="field">
             <form @submit.prevent="registrarBanner">
                 <!-- select con opciones -->
@@ -272,8 +285,7 @@ export default {
         </div>
     </Dialog>
 
-    <Dialog v-model:visible="editarDialog" :breakpoits="{ '960px': '75vw', '640px': '85vw' }" :style="{ width: '25vw' }"
-        header="Nuevo Registro" :modal="true" class="p-fluid">
+    <Dialog v-model:visible="editarDialog" :style="dialogStyle" header="Nuevo Registro" :modal="true" class="p-fluid">
         <div class="field">
             <form @submit.prevent="editarBanner">
                 <!-- select con opciones -->

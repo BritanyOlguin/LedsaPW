@@ -1,7 +1,7 @@
 <script>
 
 export default {
-    
+
     props: {
         loadDataUrl: {
             type: String,
@@ -32,12 +32,26 @@ export default {
             return this.banner.filter(item =>
                 item.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
             );
+        },
+        dialogStyle() {
+            if (window.innerWidth <= 500) {
+                return { width: '100vw', height: '100vh' };
+            }
+            return { width: '25vw' };
         }
     },
     mounted() {
         this.cargarBanner();
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize);
     },
     methods: {
+        handleResize() {
+            this.$forceUpdate();
+        },
         cargarBanner() {
             axios.post(this.loadDataUrl).then((response) => {
                 this.banner = response.data;
@@ -300,7 +314,7 @@ export default {
     </div>
 
     <Toast />
-    <Dialog v-model:visible="dialogTable" :breakpoits="{ '960px': '75vw', '640px': '85vw' }" :style="{ width: '25vw' }"
+    <Dialog v-model:visible="dialogTable" :style="dialogStyle"
         header="Nuevo Registro" :modal="true" class="p-fluid">
         <div class="field">
             <form @submit.prevent="registrarBanner">
@@ -319,7 +333,8 @@ export default {
                         class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
                         Seleccione una nueva foto
                     </button>
-                    <input ref="photoInput" type="file" accept=".jpg,.jpeg,.png,.svg" class="hidden" @change="handleFileUpload">
+                    <input ref="photoInput" type="file" accept=".jpg,.jpeg,.png,.svg" class="hidden"
+                        @change="handleFileUpload">
 
                 </div>
 
@@ -341,7 +356,7 @@ export default {
         </div>
     </Dialog>
 
-    <Dialog v-model:visible="editarDialog" :breakpoits="{ '960px': '75vw', '640px': '85vw' }" :style="{ width: '25vw' }"
+    <Dialog v-model:visible="editarDialog" :style="dialogStyle"
         header="Nuevo Registro" :modal="true" class="p-fluid">
         <div class="field">
             <form @submit.prevent="editarBanner">
@@ -361,7 +376,8 @@ export default {
                         class="inline-flex items-center px-4 py-2 bg-white border border-gray-200 rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest shadow-sm hover:text-gray-300 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
                         Seleccione una nueva foto
                     </button>
-                    <input ref="photoInput" type="file" accept=".jpg,.jpeg,.png,.svg" class="hidden" @change="handleFileUploadEdit">
+                    <input ref="photoInput" type="file" accept=".jpg,.jpeg,.png,.svg" class="hidden"
+                        @change="handleFileUploadEdit">
 
                 </div>
 

@@ -65,7 +65,6 @@ export default {
     background-color: black;
     opacity: 0.5;
     z-index: 1;
-    /* Asegúrate de que esté detrás del texto */
 }
 
 .text {
@@ -78,7 +77,6 @@ export default {
     font-weight: bold;
     text-shadow: 2px 2px 4px #000000;
     z-index: 2;
-    /* Asegúrate de que esté encima de la capa oscura */
 }
 
 .img {
