@@ -31,16 +31,18 @@ export default {
                 :deleteBannerUrl="'/home/eliminarBanner'" />
         </TabPanel>
         <TabPanel header="Imagen Productos">
-            <p>Este componente solo aceptara el <span style="color: red; font-weight: bold; ">Primer</span> elemento del registro</p>
-            <EstructuraImgITI :Titulo="'Titulo que llevara el apartado en la vista'" :loadDataUrl="'/CardProductos/bannerData'"
-                :registerBannerUrl="'/CardProductos/registrarBanner'" :editBannerUrl="'/CardProductos/editarBanner'"
-                :deleteBannerUrl="'/CardProductos/eliminarBanner'" />
+            <p>Este componente solo aceptara el <span style="color: red; font-weight: bold; ">Primer</span> elemento del
+                registro</p>
+            <EstructuraImgITI :Titulo="'Titulo que llevara el apartado en la vista'"
+                :loadDataUrl="'/CardProductos/bannerData'" :registerBannerUrl="'/CardProductos/registrarBanner'"
+                :editBannerUrl="'/CardProductos/editarBanner'" :deleteBannerUrl="'/CardProductos/eliminarBanner'" />
         </TabPanel>
         <TabPanel header="Imagen Bolsa de trabajo">
-            <p>Este componente solo aceptara el <span style="color: red; font-weight: bold; ">Primer</span> elemento del registro</p>
-            <EstructuraImgITI :Titulo="'Titulo que llevara el apartado en la vista'" :loadDataUrl="'/CardBolsaTrabajo/bannerData'"
-                :registerBannerUrl="'/CardBolsaTrabajo/registrarBanner'" :editBannerUrl="'/CardBolsaTrabajo/editarBanner'"
-                :deleteBannerUrl="'/CardBolsaTrabajo/eliminarBanner'" />
+            <p>Este componente solo aceptara el <span style="color: red; font-weight: bold; ">Primer</span> elemento del
+                registro</p>
+            <EstructuraImgITI :Titulo="'Titulo que llevara el apartado en la vista'"
+                :loadDataUrl="'/CardBolsaTrabajo/bannerData'" :registerBannerUrl="'/CardBolsaTrabajo/registrarBanner'"
+                :editBannerUrl="'/CardBolsaTrabajo/editarBanner'" :deleteBannerUrl="'/CardBolsaTrabajo/eliminarBanner'" />
         </TabPanel>
     </TabView>
 </template>

@@ -23,7 +23,7 @@ export default {
             const selectedItem = this.items[event.index];
             if (selectedItem && selectedItem.to) {
                 window.location.href = selectedItem.to;
-                this.currentPath = selectedItem.to; // Actualiza la ruta actual
+                this.currentPath = selectedItem.to;
             } else if (selectedItem.label === 'Bolsa de trabajo') {
                 window.open('https://ledsa-industrial.pandape.computrabajo.com/', '_blank');
             }

@@ -6,3 +6,9 @@
 
 <script setup>
 </script>
+
+<style>
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    color: #f07c34;
+}
+</style>
