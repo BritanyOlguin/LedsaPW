@@ -8,22 +8,22 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/',
+            path: '/homeAdmin',
             name: 'home',
             component: HomeAdmin,
         },
         {
-            path: '/productos',
+            path: '/productosAdmin',
             name: 'productos',
             component: ProductosAdmin,
         },
         {
-            path: '/nosotros',
+            path: '/nosotrosAdmin',
             name: 'nosotros',
             component: NosotrosAdmin,
         },
         {
-            path: '/avisoPrivacidad',
+            path: '/avisoPrivacidadAdmin',
             name: 'avisoPrivacidad',
             component: AvisoPrivacidadAdmin,
         },

@@ -6,10 +6,10 @@ const model = ref([
     {
         label: 'Apartados que se pueden modificar',
         items: [
-            { label: 'Home', icon: 'pi pi-fw pi-home', to: '/' },
-            { label: 'Productos', icon: 'pi pi-fw pi-list', to: '/productos' },
-            { label: 'Nosotros', icon: 'pi pi-fw pi-user', to: '/nosotros' },
-            { label: 'Aviso de privacidad', icon: 'pi pi-fw pi-file', to: '/avisoPrivacidad' },
+            { label: 'Home', icon: 'pi pi-fw pi-home', to: '/homeAdmin' },
+            { label: 'Productos', icon: 'pi pi-fw pi-list', to: '/productosAdmin' },
+            { label: 'Nosotros', icon: 'pi pi-fw pi-user', to: '/nosotrosAdmin' },
+            { label: 'Aviso de privacidad', icon: 'pi pi-fw pi-file', to: '/avisoPrivacidadAdmin' },
         ]
     },
 ]);
