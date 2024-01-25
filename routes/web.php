@@ -69,6 +69,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     }
 });
 
+Route::post('/cardP', [CardProductosController::class, 'bannerDataNew']);
+Route::post('/cardBT', [CardBolsaTrabajoController::class, 'bannerDataNew']);
+
 Route::post('/CarruselHome/bannerData', [CarruselHomeController::class, 'bannerData']);
 Route::post('/Productos/bannerData', [ProductosController::class, 'bannerData']);
 Route::post('/Nosotros/bannerData', [NosotrosController::class, 'bannerData']);

@@ -14,6 +14,12 @@ class CardProductosController extends Controller
         return response()->json($datosBanner);
     }
 
+    public function bannerDataNew()
+    {
+        $datosBanner = CardProductos::oldest()->take(1)->get();
+        return response()->json($datosBanner);
+    }
+
     public function registrarBanner(Request $request)
     {
 

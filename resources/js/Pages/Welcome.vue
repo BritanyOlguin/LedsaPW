@@ -13,8 +13,8 @@ import CardBolsaTrabajo from './components/vistasPublicas/CardBolsaTrabajo.vue';
     <div class="orange-stripe"></div>
     <br>
     <div class="card-container">
-        <cardProductos :controllerName="'/CardProductos/bannerData'" :redirectUrl="'/productos'" />
-        <CardBolsaTrabajo :controllerName="'/CardBolsaTrabajo/bannerData'" :redirectUrl="'https://ledsa-industrial.pandape.computrabajo.com/'" />
+        <cardProductos :controllerName="'/cardP'" :redirectUrl="'/productos'" />
+        <CardBolsaTrabajo :controllerName="'/cardBT'" :redirectUrl="'https://ledsa-industrial.pandape.computrabajo.com/'" />
     </div>
     <br>
     <Footer />

@@ -15,6 +15,13 @@ class CardBolsaTrabajoController extends Controller
         return response()->json($datosBanner);
     }
 
+    public function bannerDataNew()
+    {
+        $datosBanner = CardBolsaTrabajo::oldest()->take(1)->get();
+        return response()->json($datosBanner);
+    }
+
+
     public function registrarBanner(Request $request)
     {
 
