@@ -64,13 +64,13 @@ export default {
             </div>
         </div>
     </div>
-    
+
     <ImgProductos />
 
     <DataView v-if="products.length > 0" :value="products" :layout="layout">
         <template #header>
             <div class="flex justify-content-end">
-                <DataViewLayoutOptions v-model="layout"/>
+                <DataViewLayoutOptions v-model="layout" />
             </div>
         </template>
 
@@ -97,11 +97,12 @@ export default {
             <div class="grid grid-nogutter">
                 <div v-for="item in items" :key="item.id" @click="openPDFModal(item.pdf, item.nombre)"
                     class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
-                    <div class="p-4 border-1 surface-border surface-card border-round">
+                    <div class="card-container border-1 surface-border surface-card border-round">
                         <div class="flex flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="flex flex-column align-items-center gap-3 py-5">
-                                <img class="w-9 shadow-2 border-round" :src="'/storage/' + item.imagen"
-                                    :alt="item.nombre" />
+                            <div class="image-container">
+                                <img class="product-image" :src="'/storage/' + item.imagen" :alt="item.nombre" />
+                            </div>
+                            <div class="content-container">
                                 <p class="text-2xl font-bold">{{ item.nombre }}</p>
                                 <p>{{ item.contenido }}</p>
                             </div>
@@ -110,6 +111,7 @@ export default {
                 </div>
             </div>
         </template>
+
     </DataView>
     <br>
     <Footer />
@@ -205,9 +207,40 @@ export default {
     margin-top: 0px;
 }
 
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.content-container {
+    text-align: center;
+    padding: 10px;
+}
+
 @media (max-width: 468px) {
+    .image-container {
+        height: 150px;
+    }
+
     .p-dataview-layout-options {
         display: none;
     }
-}
-</style>
+}</style>
