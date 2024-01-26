@@ -71,13 +71,24 @@ export default {
 
         // auto play
         const autoPlay = () => {
-            if (intervalId.value) {
-                clearInterval(intervalId.value);  // Detener el intervalo actual
-            }
+            clearInterval(intervalId.value);
             intervalId.value = setInterval(() => {
                 nextSlide();
             }, timeoutDuration.value);
         };
+
+        const pauseAutoPlay = () => {
+            clearInterval(intervalId.value);
+        };
+
+        // Escuchar cambios en la visibilidad de la página
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                pauseAutoPlay();  // Pausar cuando la pestaña está inactiva
+            } else {
+                autoPlay();       // Reanudar cuando la pestaña está activa
+            }
+        });
 
         if (autoPlayEnabled.value) {
             autoPlay();
