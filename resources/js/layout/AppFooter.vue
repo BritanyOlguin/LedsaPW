@@ -5,13 +5,21 @@ import { computed } from 'vue';
 const { layoutConfig } = useLayout();
 
 const logoUrl = computed(() => {
-    return `/storage/imgEstaticas/logoLedsa.jpg`;
+    return `/storage/imgEstaticas/ledsaLogo.svg`;
 });
 </script>
 
 <template>
     <div class="layout-footer">
-        <img :src="logoUrl" alt="Logo" height="20" class="mr-2" />
+        <img :src="logoUrl" alt="Logo" />
     </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.layout-footer {
+    align-items: center;
+    justify-content: center;
+    img {
+        height: 120px;
+    }
+}
+</style>

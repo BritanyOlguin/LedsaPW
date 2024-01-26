@@ -19,7 +19,7 @@ onBeforeUnmount(() => {
 });
 
 const logoUrl = computed(() => {
-    return `/storage/imgEstaticas/logoLedsa.jpg`;
+    return `/storage/imgEstaticas/ledsaLogo.svg`;
 });
 
 const onTopBarMenuButton = () => {

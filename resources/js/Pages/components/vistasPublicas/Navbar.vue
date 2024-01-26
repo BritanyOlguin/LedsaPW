@@ -8,7 +8,7 @@ export default {
     data() {
         return {
             currentPath: window.location.pathname, // Ruta actual
-            logoUrl: '/storage/imgEstaticas/logoLedsa.jpg',
+            logoUrl: '/storage/imgEstaticas/ledsaLogo.svg',
             mobileMenuActive: false,
             items: [
                 { label: 'Home', icon: 'pi pi-fw pi-home', to: '/' },
