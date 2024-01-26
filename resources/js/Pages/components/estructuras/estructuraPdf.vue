@@ -151,6 +151,7 @@ export default {
 
             if (datosArreglo.pdf) {
                 this.pdfPreview = "/storage/pdfs/" + datosArreglo.pdf;
+                this.pdfFileName = datosArreglo.pdf;
             } else {
                 this.pdfPreview = null;
             }
@@ -185,6 +186,7 @@ export default {
             this.nombre = null;
             this.pdfFile = null;
             this.pdfPreview = null;
+            this.pdfFileName = null;
         },
         selectNewPdf() {
             this.$refs.pdf.click();
@@ -192,13 +194,32 @@ export default {
         handlePdfUpload(event) {
             const file = event.target.files[0];
             if (file) {
+                this.pdfFileName = file.name; // Guarda el nombre del archivo
                 this.pdfPreview = URL.createObjectURL(file);
                 this.pdfFile = file;
+                if (this.isMobile) {
+                    this.$toast.add({
+                        severity: "success",
+                        summary: "Éxito",
+                        detail: "Archivo PDF seleccionado correctamente",
+                        life: 3000,
+                    });
+                }
+            } else {
+                if (this.isMobile) {
+                    this.$toast.add({
+                        severity: "error",
+                        summary: "Error",
+                        detail: "No se pudo seleccionar el archivo PDF",
+                        life: 3000,
+                    });
+                }
             }
         },
     },
     data() {
         return {
+            pdfFileName: null,
             isMobile: window.innerWidth <= 500,
             banner: [],
             searchQuery: '',
@@ -269,6 +290,7 @@ export default {
                         Seleccione un archivo pdf
                     </button>
                     <input ref="pdf" type="file" accept="application/pdf" class="hidden" @change="handlePdfUpload">
+                    <div v-if="pdfFileName && isMobile">{{ pdfFileName }}</div>
                 </div>
 
                 <Button type="submit" id="btnRegisrar" :disabled="isLoading"
