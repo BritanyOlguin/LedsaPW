@@ -37,6 +37,8 @@ export default {
     },
 
     setup(props) {
+        const intervalId = ref(null);
+
         const currentSlide = ref(1);
         const getSlideCount = ref(props.slides.length);
         const autoPlayEnabled = ref(props.startAutoPlay);
@@ -64,14 +66,18 @@ export default {
 
         const goToSlide = (index) => {
             currentSlide.value = index + 1;
-        }
+            autoPlay();  // Reiniciar el temporizador de reproducción automática
+        };
 
         // auto play
         const autoPlay = () => {
-            setInterval(() => {
+            if (intervalId.value) {
+                clearInterval(intervalId.value);  // Detener el intervalo actual
+            }
+            intervalId.value = setInterval(() => {
                 nextSlide();
             }, timeoutDuration.value);
-        }
+        };
 
         if (autoPlayEnabled.value) {
             autoPlay();
