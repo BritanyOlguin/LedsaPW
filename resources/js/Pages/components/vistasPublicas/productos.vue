@@ -235,7 +235,17 @@ export default {
     padding: 10px;
 }
 
-@media (max-width: 468px) {
+@media (max-width: 768px) {
+
+    .pdf-modal embed {
+        display: none;
+    }
+
+    .pdf-container {
+        height: auto;
+        overflow: visible;
+    }
+
     .image-container {
         height: 150px;
     }
