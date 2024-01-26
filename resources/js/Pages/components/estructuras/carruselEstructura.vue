@@ -285,7 +285,7 @@ export default {
             <Button label="Nuevo Registro" icon="pi pi-plus" class="p-button-success !mr-2" @click="openRegistro" />
         </template>
         <template #end>
-            <span class="p-input-icon-left">
+            <span class="p-input-icon-right">
                 <i class="pi pi-search" />
                 <InputText v-model="searchQuery" placeholder="Search" />
             </span>
