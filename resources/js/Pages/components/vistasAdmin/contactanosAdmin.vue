@@ -20,7 +20,7 @@ export default {
             <estructuraHND :loadDataUrl="'/Contactos/bannerData'" :registerBannerUrl="'/Contactos/registrarBanner'" :editBannerUrl="'/Contactos/editarBanner'" :deleteBannerUrl="'/Contactos/eliminarBanner'" />
         </TabPanel>
         <TabPanel header="Departamentos">
-            <estructuraN :Titulo="'Departamento:'" :loadDataUrl="'/Departamentos/bannerData'" :registerBannerUrl="'/Departamentos/registrarBanner'" :editBannerUrl="'/Departamentos/editarBanner'" :deleteBannerUrl="'/Departamentos/eliminarBanner'" />
+            <estructuraN :Titulo="'Nombre del departamento:'" :loadDataUrl="'/Departamentos/bannerData'" :registerBannerUrl="'/Departamentos/registrarBanner'" :editBannerUrl="'/Departamentos/editarBanner'" :deleteBannerUrl="'/Departamentos/eliminarBanner'" />
         </TabPanel>
     </TabView>
 </template>

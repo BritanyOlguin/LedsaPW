@@ -263,8 +263,8 @@ export default {
                 </div>
 
                 <div class="field col-12 md:col-12">
-                    <label for="minmax">Departamento:</label>
-                    <Dropdown v-model="seleccionadas" :options="departamentos" optionLabel="nombre" placeholder="Seccion"
+                    <label for="minmax">Selecciona el departamento:</label>
+                    <Dropdown v-model="seleccionadas" :options="departamentos" optionLabel="nombre" placeholder="Departamento"
                         class="w-full md:w-14rem" />
                 </div>
 
@@ -303,9 +303,9 @@ export default {
                 </div>
 
                 <div class="field col-12 md:col-12">
-                    <label for="minmax">Departamento:</label>
+                    <label for="minmax">Selecciona el departamento:</label>
                     <Dropdown v-model="datosArreglo.departamento" :options="departamentos" optionLabel="nombre"
-                        placeholder="Seccion" class="w-full md:w-14rem" />
+                        placeholder="Departamento" class="w-full md:w-14rem" />
                 </div>
 
                 <Button type="submit" id="btnRegisrar" :disabled="isLoading"
