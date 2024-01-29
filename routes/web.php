@@ -13,13 +13,11 @@ use App\Http\Controllers\AvisoPrivacidadController;
 use App\Http\Controllers\CardProductosController;
 use App\Http\Controllers\CardBolsaTrabajoController;
 use App\Http\Controllers\ImgProductosController;
+use App\Http\Controllers\ContactosController;
+use App\Http\Controllers\DepartamentosController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
-/* Route::get('/', function () {
-    return Inertia::render('Welcome', []);
-});
- */
 
 Route::get('/', function () {
     return Inertia::render('Welcome', []);
@@ -41,6 +39,10 @@ Route::get('/bolsaTrabajo', function () {
     return Inertia::render('components/vistasPublicas/bolsaTrabajo');
 })->name('bolsaTrabajo');
 
+Route::get('/contactanos', function () {
+    return Inertia::render('components/vistasPublicas/contactanos');
+})->name('contactanos');
+
 // Rutas que incluyen el middleware de autenticación
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 
@@ -56,7 +58,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'avisoPrivacidad' => AvisoPrivacidadController::class,
         'CardProductos' => CardProductosController::class,
         'CardBolsaTrabajo' => CardBolsaTrabajoController::class,
-        'ImgProductos' => ImgProductosController::class
+        'ImgProductos' => ImgProductosController::class,
+        'Contactos' => ContactosController::class,
+        'Departamentos' => DepartamentosController::class,
     ];
 
     foreach ($controllers as $prefix => $controller) {
@@ -79,3 +83,5 @@ Route::post('/AvisoPrivacidad/bannerData', [AvisoPrivacidadController::class, 'b
 Route::post('/CardProductos/bannerData', [CardProductosController::class, 'bannerData']);
 Route::post('/CardBolsaTrabajo/bannerData', [CardBolsaTrabajoController::class, 'bannerData']);
 Route::post('/ImgProductos/bannerData', [ImgProductosController::class, 'bannerData']);
+Route::post('/Contactos/bannerData', [ContactosController::class, 'bannerData']);
+Route::post('/Departamentos/bannerData', [DepartamentosController::class, 'bannerData']);

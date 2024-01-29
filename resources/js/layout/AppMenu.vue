@@ -10,6 +10,7 @@ const model = ref([
             { label: 'Productos', icon: 'pi pi-fw pi-list', to: '/productos' },
             { label: 'Nosotros', icon: 'pi pi-fw pi-user', to: '/nosotros' },
             { label: 'Aviso de privacidad', icon: 'pi pi-fw pi-file', to: '/avisoPrivacidad' },
+            { label: 'Contactanos', icon: 'pi pi-phone', to: '/contactanos' },
         ]
     },
 ]);

@@ -21,6 +21,7 @@ import Card from 'primevue/card';
 import FileUpload from 'primevue/fileupload';
 import Image from 'primevue/image';
 import Galleria from 'primevue/galleria';
+import Dropdown from 'primevue/dropdown';
 
 // Importar estilos
 import "./assets/styles.scss"
@@ -53,6 +54,7 @@ createInertiaApp({
             .component('FileUpload', FileUpload)
             .component('Image', Image)
             .component('Galleria', Galleria)
+            .component('Dropdown', Dropdown)
             .mount(el);
         return app;
     },

@@ -13,8 +13,9 @@ export default {
             items: [
                 { label: 'Home', icon: 'pi pi-fw pi-home', to: '/' },
                 { label: 'Productos', icon: 'pi pi-list', to: '/productos' },
-                { label: 'Bolsa de trabajo', icon: 'pi pi-inbox' },
-                { label: 'Nosotros', icon: 'pi pi-user', to: '/nosotros' },
+                { label: 'Bolsa de trabajo', icon: 'pi pi-briefcase' },
+                { label: 'Nosotros', icon: 'pi pi-users', to: '/nosotros' },
+                { label: 'Contactanos', icon: 'pi pi-phone', to: '/contactanos' },
             ],
         };
     },

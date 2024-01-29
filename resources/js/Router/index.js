@@ -3,6 +3,7 @@ import HomeAdmin from '../Pages/components/vistasAdmin/homeAdmin.vue';
 import ProductosAdmin from '../Pages/components/vistasAdmin/productosAdmin.vue';
 import NosotrosAdmin from '../Pages/components/vistasAdmin/nosotrosAdmin.vue';
 import AvisoPrivacidadAdmin from '../Pages/components/vistasAdmin/avisoPrivacidadAdmin.vue';
+import ContactanosAdmin from '../Pages/components/vistasAdmin/contactanosAdmin.vue';
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -29,6 +30,11 @@ const router = createRouter({
                     path: '/avisoPrivacidad',
                     name: 'avisoPrivacidad',
                     component: AvisoPrivacidadAdmin,
+                },
+                {
+                    path: '/contactanos',
+                    name: 'contactanos',
+                    component: ContactanosAdmin,
                 },
                 {
                     path: '/auth/login',
