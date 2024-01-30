@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\imgProductos;
+use App\Models\imgContactos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ImgProductosController extends Controller
+class ImgContactosController extends Controller
 {
     public function bannerData()
     {
-        $datosBanner = ImgProductos::all();
+        $datosBanner = ImgContactos::all();
         return response()->json($datosBanner);
     }
 
     public function bannerDataNew()
     {
-        $datosBanner = ImgProductos::oldest()->take(1)->get();
+        $datosBanner = ImgContactos::oldest()->take(1)->get();
         return response()->json($datosBanner);
     }
 
@@ -25,6 +25,7 @@ class ImgProductosController extends Controller
 
         $request->validate([
             'nombre' => 'required|string|max:255',
+            'contenido' => 'required|string|max:255',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000000',
         ]);
 
@@ -35,9 +36,10 @@ class ImgProductosController extends Controller
         $fotoPath = $request->file('foto')->storeAs('public', $fotoName);
 
         // Create a new banner instance
-        $banner = new ImgProductos;
+        $banner = new ImgContactos;
         $banner->nombre = $request->nombre;
-        $banner->imagen = $fotoName;
+        $banner->contenido = $request->contenido;
+        $banner->foto = $fotoName;
         $banner->save();
 
         return response()->json('Banner registered successfully');
@@ -45,14 +47,13 @@ class ImgProductosController extends Controller
 
     public function editarBanner(Request $request)
     {
-
-
         $request->validate([
             'nombre' => 'required|string|max:255',
+            'contenido' => 'required|string|max:255',
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000000',
         ]);
 
-        $banner = ImgProductos::find($request->id);
+        $banner = ImgContactos::find($request->id);
 
 
         if ($request->hasFile('foto')) {
@@ -65,14 +66,15 @@ class ImgProductosController extends Controller
             $fotoPath = $request->file('foto')->storeAs('public', $fotoName);
 
             // Luego, eliminar la imagen anterior
-            if ($banner->imagen) {
-                Storage::delete('public/' . $banner->imagen);
+            if ($banner->foto) {
+                Storage::delete('public/' . $banner->foto);
             }
 
-            $banner->imagen = $fotoName;
+            $banner->foto = $fotoName;
         }
 
         $banner->nombre = $request->nombre;
+        $banner->contenido = $request->contenido;
         $banner->save();
 
         return response()->json('Banner edited successfully');
@@ -80,9 +82,9 @@ class ImgProductosController extends Controller
 
     public function eliminarBanner(Request $request)
     {
-        $banner = ImgProductos::find($request->id);
+        $banner = ImgContactos::find($request->id);
         //eliminar la imagen del storage
-        Storage::delete('public/' . $banner->imagen);
+        Storage::delete('public/' . $banner->foto);
         $banner->delete();
 
         return response()->json('Banner deleted successfully');

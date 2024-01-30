@@ -296,7 +296,7 @@ export default {
     <div class="cards-container">
         <Card v-for="datosCard in filteredBanner" class="card">
             <template #header>
-                <img :src="'/storage/' + datosCard.imagen" alt="Card Image" class="imagen-resolucion" />
+                <img :src="'/storage/' + datosCard.foto" alt="Card Image" class="imagen-resolucion" />
             </template>
             <template #title> {{ datosCard.nombre }} </template>
             <template #subtitle> {{ datosCard.contenido }} </template>

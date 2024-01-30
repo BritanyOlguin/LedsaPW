@@ -5,7 +5,7 @@ export default {
     },
     methods: {
         cargarBanner() {
-            axios.post('/ImgProduct').then((response) => {
+            axios.post('/ImgContact').then((response) => {
                 this.banner = response.data;
                 this.isBannerLoaded = true;
             }).catch((error) => {
@@ -26,7 +26,7 @@ export default {
     <div class="orange-stripe"></div>
     <div class="contenedor">
         <div v-for="datosCard in banner" class="contenedorImg">
-            <img class="img" :src="'/storage/' + datosCard.imagen" alt="" />
+            <img class="img" :src="'/storage/' + datosCard.foto" alt="" />
         </div>
         <div class="text" v-for="datosCard in banner">
             {{ datosCard.nombre }}

@@ -19,7 +19,7 @@ export default {
         <TabPanel header="Imagen Principal de Productos">
             <p>Este componente solo aceptara el <span style="color: red; font-weight: bold; ">Primer</span> elemento del
                 registro</p>
-            <EstructuraImgITI :Titulo="'Titulo que llevara el apartado en la vista'"
+            <EstructuraImgITI :Titulo="'Titulo que llevara el apartado en la vista:'"
                 :loadDataUrl="'/ImgProductos/bannerData'" :registerBannerUrl="'/ImgProductos/registrarBanner'"
                 :editBannerUrl="'/ImgProductos/editarBanner'" :deleteBannerUrl="'/ImgProductos/eliminarBanner'" />
         </TabPanel>

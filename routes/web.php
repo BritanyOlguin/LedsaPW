@@ -15,6 +15,7 @@ use App\Http\Controllers\CardBolsaTrabajoController;
 use App\Http\Controllers\ImgProductosController;
 use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\ImgContactosController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
@@ -61,6 +62,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'ImgProductos' => ImgProductosController::class,
         'Contactos' => ContactosController::class,
         'Departamentos' => DepartamentosController::class,
+        'ImgContactos' => ImgContactosController::class,
     ];
 
     foreach ($controllers as $prefix => $controller) {
@@ -75,6 +77,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 Route::post('/cardP', [CardProductosController::class, 'bannerDataNew']);
 Route::post('/cardBT', [CardBolsaTrabajoController::class, 'bannerDataNew']);
+Route::post('/ImgProduct', [ImgProductosController::class, 'bannerDataNew']);
+Route::post('/ImgContact', [ImgContactosController::class, 'bannerDataNew']);
 
 Route::post('/CarruselHome/bannerData', [CarruselHomeController::class, 'bannerData']);
 Route::post('/Productos/bannerData', [ProductosController::class, 'bannerData']);
@@ -85,3 +89,4 @@ Route::post('/CardBolsaTrabajo/bannerData', [CardBolsaTrabajoController::class, 
 Route::post('/ImgProductos/bannerData', [ImgProductosController::class, 'bannerData']);
 Route::post('/Contactos/bannerData', [ContactosController::class, 'bannerData']);
 Route::post('/Departamentos/bannerData', [DepartamentosController::class, 'bannerData']);
+Route::post('/ImgContactos/bannerData', [ImgContactosController::class, 'bannerData']);
