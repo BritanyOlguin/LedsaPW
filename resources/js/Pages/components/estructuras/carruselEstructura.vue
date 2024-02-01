@@ -71,7 +71,7 @@ export default {
         registrarBanner() {
             this.submitted = true;
             //validar si hay campos vacios
-            if (this.nombre == null || this.contenido == null) {
+            if (this.nombre == null || this.link == null) {
                 // si alguno de los campos esta vacio, no enviar el formulario y mostrar un mensaje de error
                 this.$toast.add({
                     severity: "error",
@@ -98,7 +98,7 @@ export default {
 
             const formData = new FormData();
             formData.append('nombre', this.nombre);
-            formData.append('contenido', this.contenido);
+            formData.append('link', this.link);
             formData.append('foto', this.foto);
 
             axios.post(this.registerBannerUrl,
@@ -109,7 +109,7 @@ export default {
             }).then((response) => {
                 this.cargarBanner();
                 this.nombre = null;
-                this.contenido = null;
+                this.link = null;
                 this.foto = null;
                 this.dialogTable = false;
                 this.$toast.add({
@@ -127,7 +127,7 @@ export default {
         editarBanner() {
             this.submitted = true;
             //validar si hay campos vacios
-            if (this.datosArreglo.nombre == null || this.datosArreglo.nombre == '' || this.datosArreglo.contenido == null || this.datosArreglo.contenido == '') {
+            if (this.datosArreglo.nombre == null || this.datosArreglo.nombre == '' || this.datosArreglo.link == null || this.datosArreglo.link == '') {
                 // si alguno de los campos esta vacio, no enviar el formulario y mostrar un mensaje de error
                 this.$toast.add({
                     severity: "error",
@@ -155,7 +155,7 @@ export default {
             const formData = new FormData();
             formData.append('id', this.datosArreglo.id);
             formData.append('nombre', this.datosArreglo.nombre);
-            formData.append('contenido', this.datosArreglo.contenido);
+            formData.append('link', this.datosArreglo.link);
 
             // Agregar la foto al formData solo si se ha seleccionado una nueva
             if (this.datosArreglo.foto) {
@@ -221,7 +221,7 @@ export default {
             this.imagePreview = null;
 
             this.nombre = null;
-            this.contenido = null;
+            this.link = null;
             this.foto = null;
         },
         selectNewPhoto() {
@@ -263,7 +263,7 @@ export default {
             banner: [],
             searchQuery: '',
             nombre: null,
-            contenido: null,
+            link: null,
             foto: null,
             uploadedFile: null,
             mensajeSinDatos: "No hay datos disponibles",
@@ -296,10 +296,10 @@ export default {
     <div class="cards-container">
         <Card v-for="datosCard in filteredBanner" class="card">
             <template #header>
-                <img :src="'/storage/' + datosCard.foto" alt="Card Image" class="imagen-resolucion" />
+                <img :src="'/storage/' + datosCard.imagen" alt="Card Image" class="imagen-resolucion" />
             </template>
             <template #title> {{ datosCard.nombre }} </template>
-            <template #subtitle> {{ datosCard.contenido }} </template>
+            <template #subtitle> {{ datosCard.link }} </template>
             <template #footer>
                 <Button icon="pi pi-pencil" class="p-button p-button-warning !mr-6" @click="editarSelect(datosCard)" />
                 <Button icon="pi pi-trash" class="p-button p-button-danger" @click="confirmarEliminar(datosCard)" />
@@ -326,7 +326,7 @@ export default {
 
                 <div class="field col-12 md:col-12">
                     <label for="minmax">{{ this.Subtitulo }}</label>
-                    <Textarea inputId="minmax" v-model="contenido" :min="0" :max="10000" :showButtons="true" />
+                    <Textarea inputId="minmax" v-model="link" :min="0" :max="10000" :showButtons="true" />
                 </div>
 
                 <img v-if="imagePreview" :src="imagePreview" alt="Previsualización" class="my-4"
@@ -373,7 +373,7 @@ export default {
 
                 <div class="field col-12 md:col-12">
                     <label for="minmax">{{ this.Subtitulo }}</label>
-                    <Textarea inputId="minmax" v-model="datosArreglo.contenido" :min="0" :max="10000" :showButtons="true" />
+                    <Textarea inputId="minmax" v-model="datosArreglo.link" :min="0" :max="10000" :showButtons="true" />
                 </div>
 
 

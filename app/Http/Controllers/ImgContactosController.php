@@ -25,7 +25,7 @@ class ImgContactosController extends Controller
 
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'contenido' => 'required|string|max:255',
+            'link' => 'required|string|max:255',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000000',
         ]);
 
@@ -38,8 +38,8 @@ class ImgContactosController extends Controller
         // Create a new banner instance
         $banner = new ImgContactos;
         $banner->nombre = $request->nombre;
-        $banner->contenido = $request->contenido;
-        $banner->foto = $fotoName;
+        $banner->link = $request->link;
+        $banner->imagen = $fotoName;
         $banner->save();
 
         return response()->json('Banner registered successfully');
@@ -49,7 +49,7 @@ class ImgContactosController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'contenido' => 'required|string|max:255',
+            'link' => 'required|string|max:255',
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000000',
         ]);
 
@@ -66,15 +66,15 @@ class ImgContactosController extends Controller
             $fotoPath = $request->file('foto')->storeAs('public', $fotoName);
 
             // Luego, eliminar la imagen anterior
-            if ($banner->foto) {
+            if ($banner->imagen) {
                 Storage::delete('public/' . $banner->foto);
             }
 
-            $banner->foto = $fotoName;
+            $banner->imagen = $fotoName;
         }
 
         $banner->nombre = $request->nombre;
-        $banner->contenido = $request->contenido;
+        $banner->link = $request->link;
         $banner->save();
 
         return response()->json('Banner edited successfully');
@@ -84,7 +84,7 @@ class ImgContactosController extends Controller
     {
         $banner = ImgContactos::find($request->id);
         //eliminar la imagen del storage
-        Storage::delete('public/' . $banner->foto);
+        Storage::delete('public/' . $banner->imagen);
         $banner->delete();
 
         return response()->json('Banner deleted successfully');

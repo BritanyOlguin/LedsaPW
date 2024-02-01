@@ -190,7 +190,7 @@ export default {
 
 
 /* Estilos responsivos */
-@media (max-width: 800px) {
+@media (max-width: 920px) {
     .desktop-menu {
         display: none;
     }

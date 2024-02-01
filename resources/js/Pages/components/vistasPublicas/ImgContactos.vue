@@ -26,13 +26,18 @@ export default {
     <div class="orange-stripe"></div>
     <div class="contenedor">
         <div v-for="datosCard in banner" class="contenedorImg">
-            <img class="img" :src="'/storage/' + datosCard.foto" alt="" />
+            <img class="img" :src="'/storage/' + datosCard.imagen" alt="" />
         </div>
         <div class="text" v-for="datosCard in banner">
             {{ datosCard.nombre }}
         </div>
     </div>
-    <div class="orange-stripe"></div>
+    <div class="orange-stripe2" v-for="datosCard in banner">
+        <div class="text2">
+            <i class="pi pi-envelope icono"></i>
+            {{ datosCard.link }}
+        </div>
+    </div>
 </template>
 
 <style scoped>
@@ -79,6 +84,28 @@ export default {
     z-index: 2;
 }
 
+.orange-stripe2 {
+    background-color: #f07c34;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+}
+
+.icono {
+    font-size: 29px;
+    margin-right: 10px;
+}
+
+.text2 {
+    font-size: 40px;
+    color: white;
+    z-index: 2;
+}
+
+
 .img {
     width: 100%;
     height: 100%;
@@ -94,6 +121,25 @@ export default {
 
     .text {
         font-size: 30px;
+    }
+
+    .orange-stripe2 {
+        height: 50px;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .icono {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .text2 {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 }
 </style>
