@@ -42,15 +42,9 @@ class DepartamentosController extends Controller
 
     public function eliminarBanner(Request $request)
     {
-        // Encuentra el departamento por su ID
         $departamento = Departamentos::find($request->id);
-
-        // Elimina todos los contactos asociados a este departamento
-        Contactos::where('departamento_id', $departamento->id)->delete();
-
-        // Elimina el departamento
         $departamento->delete();
 
-        return response()->json('Departamento y contactos asociados eliminados exitosamente.');
+        return response()->json('Departamento deleted successfully');
     }
 }
