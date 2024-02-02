@@ -133,7 +133,7 @@ export default {
             formData.append('id', this.datosArreglo.id);
             formData.append('titulo', this.datosArreglo.titulo);
             formData.append('contenido', this.datosArreglo.contenido);
-            formData.append('departamento_id', this.datosArreglo.departamento.id);
+            formData.append('departamento_id', this.seleccionadas.id);
 
             axios.post(this.editBannerUrl,
                 formData, {
@@ -158,7 +158,8 @@ export default {
 
         },
         editarSelect(datosArreglo) {
-            this.datosArreglo = { ...datosArreglo }; // esto es para que se muestre los datos del datosArregloo en el formulario
+            this.datosArreglo = { ...datosArreglo };
+            this.seleccionadas = datosArreglo.departamento;
             this.editarDialog = true
         },
         confirmarEliminar(datosArreglo) {
@@ -304,7 +305,7 @@ export default {
 
                 <div class="field col-12 md:col-12">
                     <label for="minmax">Selecciona el departamento:</label>
-                    <Dropdown v-model="datosArreglo.departamento" :options="departamentos" optionLabel="nombre"
+                    <Dropdown v-model="seleccionadas" :options="departamentos" optionLabel="nombre"
                         placeholder="Departamento" class="w-full md:w-14rem" />
                 </div>
 

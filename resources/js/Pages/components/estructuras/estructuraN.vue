@@ -150,8 +150,6 @@ export default {
             this.eliminarDialog = true;
         },
         eliminarBanner() {
-
-            //tomar el id de la fila seleccionada
             const data = {
                 id: this.datosArreglo.id,
             };
@@ -284,7 +282,7 @@ export default {
     <Dialog v-model:visible="eliminarDialog" :style="{ width: '450px' }" header="Confirmar" :modal="true">
         <div class="confirmation-content flex justify-center items-center">
             <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
-            <span v-if="datosArreglo">¿Confirma eliminar el registro <b>{{ datosArreglo.nombre }}</b>?</span>
+            <span v-if="datosArreglo">¿Confirma eliminar el registro <b>{{ datosArreglo.nombre }}</b>?<br>¡Nota importante! Si se elimina este registro se eliminarán los contactos que tengan este departamento. Si quieres conservar algún contacto, edita su departamento antes de eliminar este registro.</span>
         </div>
         <template #footer>
             <Button label="No" icon="pi pi-times" class="p-button-text" @click="eliminarDialog = false" />
