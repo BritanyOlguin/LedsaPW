@@ -36,11 +36,7 @@ const router = createRouter({
                     name: 'contactanos',
                     component: ContactanosAdmin,
                 },
-                {
-                    path: '/auth/login',
-                    name: 'login',
-                    component: () => import('../pages/auth/Login.vue')
-                },
+                //jajajajajaj
             ],
         },
     ],
