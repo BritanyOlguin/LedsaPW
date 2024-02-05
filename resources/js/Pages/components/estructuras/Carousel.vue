@@ -13,90 +13,101 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';  // Import nextTick
 import 'primeicons/primeicons.css';
-
 
 export default {
     props: {
-        startAutoPlay: { type: Boolean, default: true },
-        timeout: { type: Number, default: 5000 },
-        pagination: { type: Boolean, default: true },
-        slides: { type: Array, required: true }
+        startAutoPlay: {
+            type: Boolean,
+            default: true
+        },
+        timeout: {
+            type: Number,
+            default: 5000
+        },
+        pagination: {
+            type: Boolean,
+            default: true
+        },
+        slides: {
+            type: Array,
+            required: true
+        }
     },
 
     setup(props) {
+        const intervalId = ref(null);
+
         const currentSlide = ref(1);
-        const getSlideCount = () => props.slides.length;
-        let intervalId = null;
-        let rafId = null;
-        let lastTime = Date.now();
-
+        const getSlideCount = ref(props.slides.length);
+        const autoPlayEnabled = ref(props.startAutoPlay);
+        const timeoutDuration = ref(props.timeout);
+        const paginationEnabled = ref(props.pagination);
         const nextSlide = () => {
-            currentSlide.value = (currentSlide.value % getSlideCount()) + 1;
+            updateSlideCount();
+            if (currentSlide.value === getSlideCount.value) {
+                currentSlide.value = 1;
+                return;
+            }
+            currentSlide.value += 1;
         };
 
+        // prev slide
+        const prevSlide = () => {
+            updateSlideCount();
+            if (currentSlide.value === 1) {
+                currentSlide.value = getSlideCount.value;
+                return;
+            }
+            currentSlide.value -= 1;
+        }
+
+
+        const goToSlide = (index) => {
+            currentSlide.value = index + 1;
+            autoPlay();  // Reiniciar el temporizador de reproducción automática
+        };
+
+        // auto play
         const autoPlay = () => {
-            const now = Date.now();
-            const elapsed = now - lastTime;
-
-            if (elapsed > props.timeout) {
+            clearInterval(intervalId.value);
+            intervalId.value = setInterval(() => {
                 nextSlide();
-                lastTime = now;
-            }
-
-            rafId = requestAnimationFrame(autoPlay);
+            }, timeoutDuration.value);
         };
 
-        const startAutoPlay = () => {
-            if (props.startAutoPlay) {
-                if (typeof document.hidden !== "undefined" && !document.hidden) {
-                    rafId = requestAnimationFrame(autoPlay);
-                } else {
-                    intervalId = setInterval(nextSlide, props.timeout);
-                }
-            }
+        const pauseAutoPlay = () => {
+            clearInterval(intervalId.value);
         };
 
-        const stopAutoPlay = () => {
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-                rafId = null;
+        // Escuchar cambios en la visibilidad de la página
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                pauseAutoPlay();  // Pausar cuando la pestaña está inactiva
+            } else {
+                autoPlay();       // Reanudar cuando la pestaña está activa
             }
-            if (intervalId) {
-                clearInterval(intervalId);
-                intervalId = null;
-            }
-        };
+        });
 
-        const handleVisibilityChange = () => {
-            stopAutoPlay();
-            startAutoPlay();
+        if (autoPlayEnabled.value) {
+            autoPlay();
+        }
+
+        const updateSlideCount = () => {
+            getSlideCount.value = props.slides.length; // Usamos la longitud del prop slides 
         };
 
         onMounted(() => {
-            document.addEventListener('visibilitychange', handleVisibilityChange);
-            startAutoPlay();
+            nextTick(() => {
+                updateSlideCount();
+            });
         });
 
-        onUnmounted(() => {
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-            stopAutoPlay();
-        });
-
-        watch(() => props.startAutoPlay, (newVal) => {
-            if (newVal) {
-                startAutoPlay();
-            } else {
-                stopAutoPlay();
-            }
-        });
-
-        return { currentSlide, getSlideCount };
+        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled };
     }
 }
 </script>
-
 
 <style lang="scss">
 .pagination {
