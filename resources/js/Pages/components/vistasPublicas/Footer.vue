@@ -198,7 +198,7 @@ export default {
     border-radius: 5px;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
     .pdf-modal embed {
         display: none;
     }
@@ -215,5 +215,5 @@ export default {
     .p-dataview-layout-options {
         display: none;
     }
-} */
+}
 </style>
