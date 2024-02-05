@@ -1,4 +1,20 @@
 <template>
+    <div v-if="showPDFModal" class="pdf-modal">
+        <div class="pdf-container">
+            <button @click="closePDFModal" class="close-x">&#10005;</button>
+            <div class="pdf-header" :style="{ backgroundColor: '#f07c34' }">
+                {{ currentPDFName }}
+            </div>
+            <embed :src="currentPDF" type="application/pdf" width="100%" height="500px">
+            <div class="pdf-buttons">
+                <button @click="closePDFModal" class="close-button">Cerrar</button>
+                <a :href="currentPDF" download :download="currentPDFName" class="download-button">
+                    Descargar
+                </a>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-left">
             <div class="footer-column">
@@ -7,7 +23,7 @@
             </div>
             <div class="footer-column links">
                 <a href="/">Aviso Legal</a>
-                <a href="/">Aviso de Privacidad</a>
+                <a @click="openPDFModal(pdfInfo)">Aviso de Privacidad</a>
                 <a href="/">Mapa del sitio</a>
             </div>
         </div>
@@ -19,7 +35,39 @@
 
 <script>
 export default {
-    // Opciones del componente
+    methods: {
+        cargarAvisoPrivacidadPDF() {
+            axios.post('/AvisoPrivacidad/bannerData').then((response) => {
+                const pdfInfo = response.data[0];
+                this.avisoPrivacidadPDF = pdfInfo;
+            }).catch((error) => {
+                console.error("Error cargando PDF:", error);
+            });
+        },
+        openPDFModal() {
+            if (this.avisoPrivacidadPDF) {
+                this.currentPDF = '/storage/pdfs/' + this.avisoPrivacidadPDF.pdf;
+                this.currentPDFName = this.avisoPrivacidadPDF.nombre;
+                this.showPDFModal = true;
+            } else {
+                console.error("PDF no cargado");
+            }
+        },
+        closePDFModal() {
+            this.showPDFModal = false;
+        }
+    },
+    mounted() {
+        this.cargarAvisoPrivacidadPDF();
+    },
+    data() {
+        return {
+            showPDFModal: false,
+            currentPDF: '',
+            currentPDFName: '',
+            avisoPrivacidadPDF: null,
+        }
+    }
 };
 </script>
 
@@ -39,14 +87,17 @@ export default {
 }
 
 .footer-column {
-    margin-right: 40px; /* Espacio entre las dos columnas */
+    margin-right: 40px;
+    /* Espacio entre las dos columnas */
 }
 
 .footer-column.links a {
-    display: block; /* Cada enlace en una línea separada */
+    display: block;
+    /* Cada enlace en una línea separada */
     color: white;
     text-decoration: none;
-    margin-bottom: 5px; /* Espacio entre los enlaces */
+    margin-bottom: 5px;
+    /* Espacio entre los enlaces */
 }
 
 .footer-column.links a:hover {
@@ -61,12 +112,119 @@ export default {
 /* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 468px) {
 
-    .footer-left, .footer-right {
+    .footer-left,
+    .footer-right {
         margin: 10px 0;
     }
 
     .footer-column {
-        margin-right: 0; /* Quita el margen en pantallas pequeñas */
+        margin-right: 0;
+        /* Quita el margen en pantallas pequeñas */
     }
 }
+
+/* Estilos PDF */
+.pdf-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close-x {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-x:hover {
+    color: #ffffff;
+}
+
+.pdf-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.pdf-container {
+    position: relative;
+    width: 75%;
+    height: 80%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdf-header {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+}
+
+embed {
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+.pdf-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.close-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.download-button {
+    background-color: #8c2437;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* @media (max-width: 768px) {
+    .pdf-modal embed {
+        display: none;
+    }
+
+    .pdf-container {
+        height: auto;
+        overflow: visible;
+    }
+
+    .image-container {
+        height: 150px;
+    }
+
+    .p-dataview-layout-options {
+        display: none;
+    }
+} */
 </style>

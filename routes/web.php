@@ -32,10 +32,6 @@ Route::get('/nosotros', function () {
     return Inertia::render('components/vistasPublicas/nosotros');
 })->name('nosotros');
 
-Route::get('/avisoPrivacidad', function () {
-    return Inertia::render('components/vistasPublicas/avisoPrivacidad');
-})->name('avisoPrivacidad');
-
 Route::get('/bolsaTrabajo', function () {
     return Inertia::render('components/vistasPublicas/bolsaTrabajo');
 })->name('bolsaTrabajo');
