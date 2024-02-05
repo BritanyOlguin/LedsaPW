@@ -38,7 +38,7 @@ export default {
 
     setup(props) {
         const intervalId = ref(null);
-
+        const rafId = ref(null);
         const currentSlide = ref(1);
         const getSlideCount = ref(props.slides.length);
         const autoPlayEnabled = ref(props.startAutoPlay);
@@ -51,6 +51,24 @@ export default {
                 return;
             }
             currentSlide.value += 1;
+        };
+
+        const autoPlayRAF = () => {
+            nextSlide();
+            rafId = requestAnimationFrame(autoPlayRAF);
+        };
+
+        const startAutoPlayRAF = () => {
+            if (rafId === null) {
+                autoPlayRAF();
+            }
+        };
+
+        const stopAutoPlayRAF = () => {
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
         };
 
         // prev slide
@@ -75,6 +93,19 @@ export default {
             intervalId.value = setInterval(() => {
                 nextSlide();
             }, timeoutDuration.value);
+        };
+
+        const startAutoPlayInterval = () => {
+            if (!intervalId) {
+                intervalId = setInterval(nextSlide, props.timeout);
+            }
+        };
+
+        const stopAutoPlayInterval = () => {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
         };
 
         const pauseAutoPlay = () => {
@@ -104,7 +135,29 @@ export default {
             });
         });
 
-        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled };
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                stopAutoPlayRAF();
+                stopAutoPlayInterval();
+            } else {
+                startAutoPlayRAF();
+                startAutoPlayInterval();
+            }
+        };
+
+        onMounted(() => {
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+            startAutoPlayRAF(); // Empezamos con RAF por defecto
+            // Fallback a setInterval para navegadores que no soporten bien RAF en pestañas inactivas
+            startAutoPlayInterval();
+        });
+
+        return {
+            currentSlide,
+            nextSlide,
+            getSlideCount,
+            paginationEnabled
+        };
     }
 }
 </script>
