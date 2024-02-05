@@ -124,28 +124,6 @@ export default {
 }
 
 /* Estilos PDF */
-.pdf-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.close-x {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-    color: black;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-x:hover {
-    color: #ffffff;
-}
-
 .pdf-modal {
     position: fixed;
     top: 0;
@@ -170,6 +148,22 @@ export default {
     flex-direction: column;
 }
 
+.close-x {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-x:hover {
+    color: #ffffff;
+}
+
 .pdf-header {
     height: 40px;
     line-height: 40px;
@@ -177,11 +171,6 @@ export default {
     color: white;
     font-size: medium;
     font-weight: bold;
-}
-
-embed {
-    width: 100%;
-    height: calc(100vh - 80px);
 }
 
 .pdf-buttons {
@@ -202,7 +191,7 @@ embed {
 }
 
 .download-button {
-    background-color: #8c2437;
+    background-color: #f07c34;
     color: white;
     text-decoration: none;
     padding: 10px 20px;
