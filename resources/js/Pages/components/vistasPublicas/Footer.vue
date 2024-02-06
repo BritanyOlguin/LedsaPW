@@ -203,6 +203,25 @@ export default {
     border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+    .pdf-modal embed {
+        display: none;
+    }
+
+    .pdf-container {
+        height: auto;
+        overflow: visible;
+    }
+
+    .image-container {
+        height: 150px;
+    }
+
+    .p-dataview-layout-options {
+        display: none;
+    }
+}
+
 /* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 568px) {
     .footer {
