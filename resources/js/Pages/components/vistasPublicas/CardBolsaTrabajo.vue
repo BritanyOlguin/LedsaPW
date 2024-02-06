@@ -31,7 +31,7 @@ export default {
 
 <template>
     <div class="align-items-center justify-content-center">
-        <Card style="width: 25em; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);" @click="redirectToPage">
+        <Card class="responsive-card" @click="redirectToPage">
             <template #header>
                 <div v-for="datosCard in banner">
                     <img :src="'/storage/' + datosCard.imagen" alt="" />
@@ -46,4 +46,15 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.responsive-card {
+    width: 25em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 368px) {
+    .responsive-card {
+        width: 18em;
+    }
+}
+</style>
