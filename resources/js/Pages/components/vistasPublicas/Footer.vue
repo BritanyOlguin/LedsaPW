@@ -18,9 +18,7 @@
     <footer class="footer">
         <div class="footer-left">
             <div class="footer-column">
-                <p>@LEDSA</p>
-                <p>todos los</p>
-                <p>Derechos Reservados</p>
+                <p><span class="rights-symbol">&reg;</span> LEDSA Todos los Derechos Reservados</p>
             </div>
             <div class="footer-column links">
                 <a href="/">Aviso Legal</a>
@@ -29,7 +27,7 @@
             </div>
         </div>
         <div class="footer-right">
-            <p>@2021 LEDSA INDUSTRIAL S.A DE C.V</p>
+            <p><span class="rights-symbol">&reg;</span> 2021 LEDSA INDUSTRIAL S.A DE C.V</p>
         </div>
     </footer>
 </template>
@@ -73,6 +71,12 @@ export default {
 </script>
 
 <style scoped>
+/* Estilos R */
+.rights-symbol {
+    font-size: 1.7em;
+    vertical-align: middle;
+}
+
 .footer {
     background-color: #f07c34;
     color: white;
@@ -115,6 +119,14 @@ export default {
 }
 
 /* Estilos responsivos para pantallas pequeñas */
+
+@media (max-width: 328px) {
+    .footer-right {
+        text-align: center;
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 468px) {
 
     .footer-left,
@@ -124,7 +136,6 @@ export default {
 
     .footer-column {
         margin-right: 0;
-        /* Quita el margen en pantallas pequeñas */
     }
 }
 
@@ -285,5 +296,4 @@ export default {
     .footer-column.links a {
         margin-bottom: 5px;
     }
-}
-</style>
+}</style>
