@@ -45,4 +45,5 @@ import CardBolsaTrabajo from './components/vistasPublicas/CardBolsaTrabajo.vue';
         flex-direction: column;
         align-items: center;
     }
-}</style>
+}
+</style>

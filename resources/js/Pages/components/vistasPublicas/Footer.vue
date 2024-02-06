@@ -18,8 +18,9 @@
     <footer class="footer">
         <div class="footer-left">
             <div class="footer-column">
-                <br>@LEDSA todos los
-                <br>Derechos Reservados
+                <p>@LEDSA</p>
+                <p>todos los</p>
+                <p>Derechos Reservados</p>
             </div>
             <div class="footer-column links">
                 <a href="/">Aviso Legal</a>
@@ -88,7 +89,11 @@ export default {
 
 .footer-column {
     margin-right: 40px;
-    /* Espacio entre las dos columnas */
+}
+
+.footer-column>p {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .footer-column.links a {
@@ -198,22 +203,68 @@ export default {
     border-radius: 5px;
 }
 
-@media (max-width: 768px) {
-    .pdf-modal embed {
-        display: none;
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 568px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .pdf-container {
-        height: auto;
-        overflow: visible;
+    .footer-left,
+    .footer-right {
+        margin: 10px;
+        flex: 1;
     }
 
-    .image-container {
-        height: 150px;
+    .footer-left {
+        order: 2;
     }
 
-    .p-dataview-layout-options {
-        display: none;
+    .footer-column,
+    .footer-right p,
+    .footer-column.links a {
+        font-size: 14px;
+        margin-left: 25px;
+    }
+
+    .footer-column {
+        margin-right: 0;
+    }
+
+    .footer-column.links a {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 468px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        margin: 10px;
+        flex: 1;
+    }
+
+    .footer-left {
+        order: 2;
+    }
+
+    .footer-column,
+    .footer-right p,
+    .footer-column.links a {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    .footer-column {
+        margin-right: 0;
+    }
+
+    .footer-column.links a {
+        margin-bottom: 5px;
     }
 }
 </style>
