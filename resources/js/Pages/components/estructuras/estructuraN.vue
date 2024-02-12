@@ -21,6 +21,10 @@ export default {
             type: String,
             required: true
         },
+        Subtitulo: {
+            type: String,
+            required: true
+        },
     },
     computed: {
         filteredBanner() {
@@ -61,7 +65,7 @@ export default {
         registrarBanner() {
             this.submitted = true;
             //validar si hay campos vacios
-            if (this.nombre == null) {
+            if (this.nombre == null || this.link == null) {
                 // si alguno de los campos esta vacio, no enviar el formulario y mostrar un mensaje de error
                 this.$toast.add({
                     severity: "error",
@@ -77,6 +81,7 @@ export default {
 
             const formData = new FormData();
             formData.append('nombre', this.nombre);
+            formData.append('link', this.link);
 
             axios.post(this.registerBannerUrl,
                 formData, {
@@ -86,6 +91,7 @@ export default {
             }).then((response) => {
                 this.cargarBanner();
                 this.nombre = null;
+                this.link = null;
                 this.dialogTable = false;
                 this.$toast.add({
                     severity: "success",
@@ -102,7 +108,7 @@ export default {
         editarBanner() {
             this.submitted = true;
             //validar si hay campos vacios
-            if (this.datosArreglo.nombre == null || this.datosArreglo.nombre == '') {
+            if (this.datosArreglo.nombre == null || this.datosArreglo.nombre == '' || this.datosArreglo.link == null || this.datosArreglo.link == '') {
                 // si alguno de los campos esta vacio, no enviar el formulario y mostrar un mensaje de error
                 this.$toast.add({
                     severity: "error",
@@ -118,6 +124,7 @@ export default {
             const formData = new FormData();
             formData.append('id', this.datosArreglo.id);
             formData.append('nombre', this.datosArreglo.nombre);
+            formData.append('link', this.datosArreglo.link);
 
             axios.post(this.editBannerUrl,
                 formData, {
@@ -174,6 +181,7 @@ export default {
             this.submitted = false;
             this.dialogTable = true;
             this.nombre = null;
+            this.link = null;
         }
     },
     data() {
@@ -181,6 +189,7 @@ export default {
             departamento: [],
             searchQuery: '',
             nombre: null,
+            link: null,
             mensajeSinDatos: "No hay datos disponibles",
             dialogTable: false,
             editarDialog: false,
@@ -209,6 +218,7 @@ export default {
     <div class="cards-container">
         <Card v-for="datosCard in filteredBanner" class="card">
             <template #title> {{ datosCard.nombre }} </template>
+            <template #subtitle> {{ datosCard.link }} </template>
             <template #footer>
                 <Button icon="pi pi-pencil" class="p-button p-button-warning !mr-6" @click="editarSelect(datosCard)" />
                 <Button icon="pi pi-trash" class="p-button p-button-danger" @click="confirmarEliminar(datosCard)" />
@@ -231,6 +241,11 @@ export default {
                 <div class="field col-12 md:col-12">
                     <label for="minmax">{{ this.Titulo }}</label>
                     <InputText inputId="minmax" v-model="nombre" :min="0" :max="10000" :showButtons="true" />
+                </div>
+
+                <div class="field col-12 md:col-12">
+                    <label for="minmax">{{ this.Subtitulo }}</label>
+                    <Textarea inputId="minmax" v-model="link" :min="0" :max="10000" :showButtons="true" />
                 </div>
 
                 <Button type="submit" id="btnRegisrar" :disabled="isLoading"
@@ -262,6 +277,11 @@ export default {
                     <InputText inputId="minmax" v-model="datosArreglo.nombre" :min="0" :max="10000" :showButtons="true" />
                 </div>
 
+                <div class="field col-12 md:col-12">
+                    <label for="minmax">{{ this.Subtitulo }}</label>
+                    <Textarea inputId="minmax" v-model="datosArreglo.link" :min="0" :max="10000" :showButtons="true" />
+                </div>
+
                 <Button type="submit" id="btnRegisrar" :disabled="isLoading"
                     class="flex items-center justify-center space-x-2 rounded-md border-2 border-blue-500 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-500 hover:text-white">
                     <span v-if="!isLoading"> Registrar </span>
@@ -282,7 +302,9 @@ export default {
     <Dialog v-model:visible="eliminarDialog" :style="{ width: '450px' }" header="Confirmar" :modal="true">
         <div class="confirmation-content flex justify-center items-center">
             <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
-            <span v-if="datosArreglo">¿Confirma eliminar el registro <b>{{ datosArreglo.nombre }}</b>?<br>¡Nota importante! Si deseas eliminar este departamento antes debes eliminar los contactos que lo utilizan o modificar el departamento, de lo contrario no te dejara eliminar el registro.</span>
+            <span v-if="datosArreglo">¿Confirma eliminar el registro <b>{{ datosArreglo.nombre }}</b>?<br>¡Nota importante!
+                Si deseas eliminar este departamento antes debes eliminar los contactos que lo utilizan o modificar el
+                departamento, de lo contrario no te dejara eliminar el registro.</span>
         </div>
         <template #footer>
             <Button label="No" icon="pi pi-times" class="p-button-text" @click="eliminarDialog = false" />

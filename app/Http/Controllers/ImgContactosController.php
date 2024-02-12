@@ -25,7 +25,6 @@ class ImgContactosController extends Controller
 
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'link' => 'required|string|max:255',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000000',
         ]);
 
@@ -38,7 +37,6 @@ class ImgContactosController extends Controller
         // Create a new banner instance
         $banner = new ImgContactos;
         $banner->nombre = $request->nombre;
-        $banner->link = $request->link;
         $banner->imagen = $fotoName;
         $banner->save();
 
@@ -49,7 +47,6 @@ class ImgContactosController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'link' => 'required|string|max:255',
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000000',
         ]);
 
@@ -74,7 +71,6 @@ class ImgContactosController extends Controller
         }
 
         $banner->nombre = $request->nombre;
-        $banner->link = $request->link;
         $banner->save();
 
         return response()->json('Banner edited successfully');

@@ -40,7 +40,11 @@ export default {
 <template>
     <div class="departamentos-container">
         <div class="departamento" v-for="(grupo, departamento) in contactosPorDepartamento" :key="departamento">
-            <h3 style="font-size: 1.9em">{{ departamento }}</h3>
+            <h3 style="font-size: 1.9em; font-weight: bold;">{{ departamento }}</h3>
+            <div v-if="grupo.length > 0" class="contacto-info">
+                <i class="pi pi-envelope icono"></i>
+                <p style="font-size: 1.2em; font-weight: bold;" >{{ grupo[0].departamento.link }}</p>
+            </div>
             <div v-for="contacto in grupo" :key="contacto.id" class="contacto">
                 <p class="titulo">{{ contacto.titulo }}</p>
                 <div class="contacto-info">
@@ -51,6 +55,7 @@ export default {
         </div>
     </div>
 </template>
+
 
 <style scoped>
 .departamentos-container {
