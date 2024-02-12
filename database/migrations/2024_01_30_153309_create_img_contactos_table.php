@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('img_contactos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('link');
             $table->string('imagen');
             $table->timestamps();
         });

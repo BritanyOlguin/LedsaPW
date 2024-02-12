@@ -17,11 +17,13 @@ class DepartamentosController extends Controller
     public function registrarBanner(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255'
+            'nombre' => 'required|string|max:255',
+            'link' => 'required|string|max:255'
         ]);
 
         $departamento = new Departamentos;
         $departamento->nombre = $request->nombre;
+        $departamento->link = $request->link;
         $departamento->save();
 
         return response()->json('Departamento added successfully');
@@ -30,11 +32,13 @@ class DepartamentosController extends Controller
     public function editarBanner(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255'
+            'nombre' => 'required|string|max:255',
+            'link' => 'required|string|max:255',
         ]);
 
         $departamento = Departamentos::find($request->id);
         $departamento->nombre = $request->nombre;
+        $departamento->link = $request->link;
         $departamento->save();
 
         return response()->json('Departamento updated successfully');

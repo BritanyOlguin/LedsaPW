@@ -32,12 +32,7 @@ export default {
             {{ datosCard.nombre }}
         </div>
     </div>
-    <div class="orange-stripe2" v-for="datosCard in banner">
-        <div class="text2">
-            <i class="pi pi-envelope icono"></i>
-            {{ datosCard.link }}
-        </div>
-    </div>
+    <div class="orange-stripe"></div>
 </template>
 
 <style scoped>
@@ -82,16 +77,6 @@ export default {
     font-weight: bold;
     text-shadow: 2px 2px 4px #000000;
     z-index: 2;
-}
-
-.orange-stripe2 {
-    background-color: #f07c34;
-    height: 70px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 5%;
 }
 
 .icono {
