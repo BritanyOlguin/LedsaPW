@@ -1,6 +1,6 @@
 
 <template>
-    <div class="carousel" ref="carousel">
+    <div class="carousel" ref="rootRef">
         <slot :currentSlide="currentSlide" />
         <!-- Pagination -->
         <div v-if="paginationEnabled && getSlideCount > 1" class="pagination">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ref, onMounted, watch, nextTick } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 
 export default {
     props: {
