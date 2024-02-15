@@ -123,6 +123,7 @@ export default {
                 updateSlideCount();
             });
             autoPlay();
+            goToSlide();
         });
 
         return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled, handleTouchStart, handleTouchMove, handleTouchEnd };
