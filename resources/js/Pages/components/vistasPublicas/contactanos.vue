@@ -3,6 +3,7 @@ import Navbar from './Navbar.vue';
 import Footer from './Footer.vue';
 import ImgContactos from './ImgContactos.vue';
 import listaContactos from './listaContactos.vue';
+import Ubicacion from './Ubicacion.vue';
 
 export default {
     components: {
@@ -10,6 +11,7 @@ export default {
         Footer,
         ImgContactos,
         listaContactos,
+        Ubicacion
     },
 }
 </script>
@@ -18,7 +20,10 @@ export default {
     <Navbar />
     <ImgContactos />
     <listaContactos :controllerName="'/Contactos/bannerData'" />
+    <div style="background-color: white;">
+        <Ubicacion />
+    </div>
     <Footer />
 </template>
 
-<style></style>
+<style scoped></style>
