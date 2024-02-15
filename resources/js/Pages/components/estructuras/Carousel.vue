@@ -43,10 +43,12 @@ export default {
 
         const handleTouchStart = (event) => {
             startX = event.touches[0].clientX;
+            autoPlay();
         };
 
         const handleTouchMove = (event) => {
             endX = event.touches[0].clientX;
+            autoPlay();
         };
 
         const handleTouchEnd = () => {
@@ -123,7 +125,6 @@ export default {
                 updateSlideCount();
             });
             autoPlay();
-            goToSlide();
         });
 
         return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled, handleTouchStart, handleTouchMove, handleTouchEnd };
