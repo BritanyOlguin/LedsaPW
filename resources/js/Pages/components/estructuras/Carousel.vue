@@ -1,6 +1,7 @@
 
 <template>
-    <div class="carousel" ref="rootRef">
+    <div class="carousel" ref="rootRef" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd">
         <slot :currentSlide="currentSlide" />
         <!-- Pagination -->
         <div v-if="paginationEnabled && getSlideCount > 1" class="pagination">
@@ -13,8 +14,7 @@
 </template>
 
 <script>
-import { ref, onMounted, nextTick } from 'vue';  // Import nextTick
-import 'primeicons/primeicons.css';
+import { ref, onMounted, nextTick } from 'vue';
 
 export default {
     props: {
@@ -37,6 +37,28 @@ export default {
     },
 
     setup(props) {
+
+        let startX = 0;
+        let endX = 0;
+
+        const handleTouchStart = (event) => {
+            startX = event.touches[0].clientX;
+            autoPlay();
+        };
+
+        const handleTouchMove = (event) => {
+            endX = event.touches[0].clientX;
+            autoPlay();
+        };
+
+        const handleTouchEnd = () => {
+            if (startX - endX > 50) {
+                nextSlide(); // Deslizar hacia la izquierda, mostrar siguiente
+            } else if (startX - endX < -50) {
+                prevSlide(); // Deslizar hacia la derecha, mostrar anterior
+            }
+        };
+
         const intervalId = ref(null);
 
         const currentSlide = ref(1);
@@ -102,9 +124,10 @@ export default {
             nextTick(() => {
                 updateSlideCount();
             });
+            autoPlay();
         });
 
-        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled };
+        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled, handleTouchStart, handleTouchMove, handleTouchEnd };
     }
 }
 </script>
