@@ -1,6 +1,6 @@
 
 <template>
-    <div class="carousel" ref="rootRef">
+    <div class="carousel" ref="carousel">
         <slot :currentSlide="currentSlide" />
         <!-- Pagination -->
         <div v-if="paginationEnabled && getSlideCount > 1" class="pagination">
@@ -13,8 +13,7 @@
 </template>
 
 <script>
-import { ref, onMounted, nextTick } from 'vue';  // Import nextTick
-import 'primeicons/primeicons.css';
+import { ref, onMounted, watch, nextTick } from 'vue';
 
 export default {
     props: {
@@ -102,6 +101,7 @@ export default {
             nextTick(() => {
                 updateSlideCount();
             });
+            autoPlay();
         });
 
         return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled };
