@@ -30,7 +30,7 @@ export default {
             }
         },
         toggleMobileMenu() {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 920) {
                 return;
             }
             this.mobileMenuActive = !this.mobileMenuActive;
