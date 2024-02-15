@@ -1,6 +1,7 @@
 
 <template>
-    <div class="carousel" ref="rootRef">
+    <div class="carousel" ref="rootRef" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd">
         <slot :currentSlide="currentSlide" />
         <!-- Pagination -->
         <div v-if="paginationEnabled && getSlideCount > 1" class="pagination">
@@ -36,6 +37,26 @@ export default {
     },
 
     setup(props) {
+
+        let startX = 0;
+        let endX = 0;
+
+        const handleTouchStart = (event) => {
+            startX = event.touches[0].clientX;
+        };
+
+        const handleTouchMove = (event) => {
+            endX = event.touches[0].clientX;
+        };
+
+        const handleTouchEnd = () => {
+            if (startX - endX > 50) {
+                nextSlide(); // Deslizar hacia la izquierda, mostrar siguiente
+            } else if (startX - endX < -50) {
+                prevSlide(); // Deslizar hacia la derecha, mostrar anterior
+            }
+        };
+
         const intervalId = ref(null);
 
         const currentSlide = ref(1);
@@ -104,7 +125,7 @@ export default {
             autoPlay();
         });
 
-        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled };
+        return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled, handleTouchStart, handleTouchMove, handleTouchEnd };
     }
 }
 </script>
