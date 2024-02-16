@@ -75,7 +75,7 @@ export default {
                 <i class="pi pi-times icon-large"></i>
             </button>
             <ul class="menu-items">
-                <li v-for="(item, index) in items" :key="index" @click="() => onTabChange({ index })" >
+                <li v-for="(item, index) in items" :key="index" @click="() => onTabChange({ index })">
                     <i :class="item.icon"></i>
                     {{ item.label }}
                 </li>
@@ -85,7 +85,6 @@ export default {
 </template>
 
 <style>
-
 .card {
     margin: 0;
     padding: 1rem;
@@ -139,7 +138,7 @@ export default {
 .full-screen-menu {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: fixed;
     top: 0;
@@ -149,6 +148,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 1001;
     overflow-y: auto;
+    padding-top: 60px;
 }
 
 .full-screen-menu .close-button {
@@ -174,6 +174,8 @@ export default {
     color: white;
     cursor: pointer;
     transition: color 0.3s;
+    width: 100%;
+    text-align: center;
 }
 
 .full-screen-menu .menu-items li:hover {
