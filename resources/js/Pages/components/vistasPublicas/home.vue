@@ -125,11 +125,11 @@ export default {
     }
 
     @media (min-width: 900px) and (max-width: 999px) {
-        height: 70vh;
+        height: 60vh;
     }
 
     @media (min-width: 1000px) {
-        height: 100vh;
+        height: 70vh;
     }
 
 }
