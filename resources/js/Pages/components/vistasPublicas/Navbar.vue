@@ -75,7 +75,7 @@ export default {
                 <i class="pi pi-times icon-large"></i>
             </button>
             <ul class="menu-items">
-                <li v-for="(item, index) in items" :key="index" @click="() => onTabChange({ index })">
+                <li v-for="(item, index) in items" :key="index" @click="() => onTabChange({ index })" :class="{ active: currentPath === item.to }">
                     <i :class="item.icon"></i>
                     {{ item.label }}
                 </li>
@@ -188,6 +188,10 @@ export default {
 
 .estilos-tabmenu li.active {
     border-bottom: 3px solid #f07c34;
+    color: #f07c34;
+}
+
+.full-screen-menu .menu-items li.active {
     color: #f07c34;
 }
 
