@@ -148,6 +148,7 @@ export default {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 1001;
+    overflow-y: auto;
 }
 
 .full-screen-menu .close-button {
