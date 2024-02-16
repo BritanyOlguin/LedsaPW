@@ -27,6 +27,7 @@ export default {
                 this.currentPath = selectedItem.to;
             } else if (selectedItem.label === 'Bolsa de trabajo') {
                 window.open('https://ledsa-industrial.pandape.computrabajo.com/', '_blank');
+                this.mobileMenuActive = false;
             }
         },
         toggleMobileMenu() {
