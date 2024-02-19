@@ -126,6 +126,10 @@ export default {
     }
 
     /* HORIZONTAL */
+    @media (max-width: 499px) and (orientation: landscape) {
+        height: 50vh;
+    }
+
     @media (min-width: 500px) and (max-width: 699px) and (orientation: landscape) {
         height: 50vh;
     }
