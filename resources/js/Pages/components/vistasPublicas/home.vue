@@ -131,7 +131,7 @@ export default {
     }
 
     @media (min-width: 500px) and (max-width: 699px) and (orientation: landscape) {
-        height: 50vh;
+        height: 60vh;
     }
 
     @media (min-width: 700px) and (max-width: 999px) and (orientation: landscape) {
