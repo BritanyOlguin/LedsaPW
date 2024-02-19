@@ -85,11 +85,11 @@ export default {
 .carousel {
     position: relative;
     max-height: 90vh;
-    height: 90vh;
+    height: 50vh;
 
     img[src$=".svg"] {
         width: 100%;
-        height: 100%;
+        height: auto;
         display: block;
         object-fit: cover;
     }
@@ -108,27 +108,33 @@ export default {
         }
     }
 
-    @media (max-width: 399px) {
+    /* VERTICAL */
+    @media (max-width: 399px) and (orientation: portrait) {
         height: 30vh;
     }
 
-    @media (min-width: 400px) and (max-width: 499px) {
-        height: 40vh;
+    @media (min-width: 400px) and (max-width: 599px) and (orientation: portrait) {
+        height: 30vh;
     }
 
-    @media (min-width: 500px) and (max-width: 699px) {
+    @media (min-width: 600px) and (max-width: 999px) and (orientation: portrait) {
+        height: 35vh;
+    }
+
+    @media (min-width: 1000px) and (orientation: portrait) {
+        height: 35vh;
+    }
+
+    /* HORIZONTAL */
+    @media (min-width: 500px) and (max-width: 699px) and (orientation: landscape) {
         height: 50vh;
     }
 
-    @media (min-width: 700px) and (max-width: 899px) {
-        height: 50vh;
+    @media (min-width: 700px) and (max-width: 999px) and (orientation: landscape) {
+        height: 60vh;
     }
 
-    @media (min-width: 900px) and (max-width: 999px) {
-        height: 50vh;
-    }
-
-    @media (min-width: 1000px) {
+    @media (min-width: 1000px) and (orientation: landscape) {
         height: 70vh;
     }
 

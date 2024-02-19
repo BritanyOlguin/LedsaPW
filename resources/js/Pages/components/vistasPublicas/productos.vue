@@ -235,7 +235,7 @@ export default {
     padding: 10px;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1030px) {
 
     .pdf-modal embed {
         display: none;
