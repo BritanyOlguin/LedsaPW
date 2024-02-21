@@ -1,8 +1,8 @@
 <script setup>
-import carruselEstructura from '../estructuras/carruselEstructura.vue';
 import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 import EstructuraImgITI from '../estructuras/estructuraImgITI.vue';
+import estructuraImgITII from '../estructuras/estructuraImgITII.vue';
 import EstructuraTextos from '../estructuras/estructuraTextos.vue';
 </script>
 
@@ -34,7 +34,7 @@ import EstructuraTextos from '../estructuras/estructuraTextos.vue';
         </TabPanel>
 
         <TabPanel header="Valores">
-            <EstructuraImgITI :Titulo="'Valor:'" :loadDataUrl="'/Valores/bannerData'" :registerBannerUrl="'/Valores/registrarBanner'" :editBannerUrl="'/Valores/editarBanner'" :deleteBannerUrl="'/Valores/eliminarBanner'" />
+            <estructuraImgITII :Titulo="'Valor:'" :loadDataUrl="'/Valores/bannerData'" :registerBannerUrl="'/Valores/registrarBanner'" :editBannerUrl="'/Valores/editarBanner'" :deleteBannerUrl="'/Valores/eliminarBanner'" />
         </TabPanel>
 
         <!-- <TabPanel header="Adicional">
