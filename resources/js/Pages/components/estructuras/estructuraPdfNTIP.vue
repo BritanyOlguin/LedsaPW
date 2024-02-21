@@ -423,7 +423,7 @@ export default {
 
                 <div class="field col-12 md:col-3">
                     <button :type="type" @click.prevent="selectNewPhoto"
-                        class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
+                        class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-600 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
                         Seleccione una nueva foto
                     </button>
                     <input ref="photoInput" type="file" accept=".jpg,.jpeg,.png,.svg" class="hidden"
@@ -436,7 +436,7 @@ export default {
 
                 <div class="field col-12 md:col-3">
                     <button :type="type" @click.prevent="selectNewPdf"
-                        class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
+                        class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-600 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
                         Seleccione un archivo pdf
                     </button>
                     <input ref="pdf" type="file" accept="application/pdf" class="hidden" @change="handlePdfUpload">
@@ -483,7 +483,7 @@ export default {
 
                 <div class="field col-12 md:col-12">
                     <button :type="type" @click.prevent="selectNewPhoto"
-                        class="inline-flex items-center px-4 py-2 bg-white border border-gray-200 rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest shadow-sm hover:text-gray-300 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
+                        class="inline-flex items-center px-4 py-2 bg-white border border-gray-200 rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest shadow-sm hover:text-gray-600 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
                         Seleccione una nueva foto
                     </button>
                     <input ref="photoInput" type="file" accept=".jpg,.jpeg,.png,.svg" class="hidden"
@@ -495,7 +495,7 @@ export default {
 
                     <div class="field col-12 md:col-12">
                         <button :type="type" @click.prevent="selectNewPdf"
-                            class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
+                            class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-600 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
                             Seleccione un archivo pdf
                         </button>
                         <input ref="pdf" type="file" accept="application/pdf" class="hidden" @change="handlePdfUpload">

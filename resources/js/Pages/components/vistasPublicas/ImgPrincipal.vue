@@ -3,9 +3,12 @@ export default {
     mounted() {
         this.cargarBanner();
     },
+    props:{
+        controllerName: String
+    },
     methods: {
         cargarBanner() {
-            axios.post('/ImgProduct').then((response) => {
+            axios.post(this.controllerName).then((response) => {
                 this.banner = response.data;
                 this.isBannerLoaded = true;
             }).catch((error) => {
@@ -79,6 +82,18 @@ export default {
     z-index: 2;
 }
 
+.icono {
+    font-size: 29px;
+    margin-right: 10px;
+}
+
+.text2 {
+    font-size: 40px;
+    color: white;
+    z-index: 2;
+}
+
+
 .img {
     width: 100%;
     height: 100%;
@@ -94,6 +109,25 @@ export default {
 
     .text {
         font-size: 30px;
+    }
+
+    .orange-stripe2 {
+        height: 50px;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .icono {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .text2 {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 }
 </style>

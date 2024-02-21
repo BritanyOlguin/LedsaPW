@@ -16,6 +16,11 @@ use App\Http\Controllers\ImgProductosController;
 use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\DepartamentosController;
 use App\Http\Controllers\ImgContactosController;
+use App\Http\Controllers\ImgNosotrosController;
+use App\Http\Controllers\MisionController;
+use App\Http\Controllers\VisionController;
+use App\Http\Controllers\HistoriaController;
+use App\Http\Controllers\ValoresController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
@@ -59,6 +64,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'Contactos' => ContactosController::class,
         'Departamentos' => DepartamentosController::class,
         'ImgContactos' => ImgContactosController::class,
+        'ImgNosotros' => ImgNosotrosController::class,
+        'Mision' => MisionController::class,
+        'Vision' => VisionController::class,
+        'Historia' => HistoriaController::class,
+        'Valores' => ValoresController::class,
     ];
 
     foreach ($controllers as $prefix => $controller) {
@@ -75,6 +85,10 @@ Route::post('/cardP', [CardProductosController::class, 'bannerDataNew']);
 Route::post('/cardBT', [CardBolsaTrabajoController::class, 'bannerDataNew']);
 Route::post('/ImgProduct', [ImgProductosController::class, 'bannerDataNew']);
 Route::post('/ImgContact', [ImgContactosController::class, 'bannerDataNew']);
+Route::post('/ImgNosotro', [ImgNosotrosController::class, 'bannerDataNew']);
+Route::post('/Mis', [MisionController::class, 'bannerDataNew']);
+Route::post('/Vis', [VisionController::class, 'bannerDataNew']);
+Route::post('/Histor', [HistoriaController::class, 'bannerDataNew']);
 
 Route::post('/CarruselHome/bannerData', [CarruselHomeController::class, 'bannerData']);
 Route::post('/Productos/bannerData', [ProductosController::class, 'bannerData']);
@@ -86,3 +100,8 @@ Route::post('/ImgProductos/bannerData', [ImgProductosController::class, 'bannerD
 Route::post('/Contactos/bannerData', [ContactosController::class, 'bannerData']);
 Route::post('/Departamentos/bannerData', [DepartamentosController::class, 'bannerData']);
 Route::post('/ImgContactos/bannerData', [ImgContactosController::class, 'bannerData']);
+Route::post('/ImgNosotros/bannerData', [ImgNosotrosController::class, 'bannerData']);
+Route::post('/Mision/bannerData', [MisionController::class, 'bannerData']);
+Route::post('/Vision/bannerData', [VisionController::class, 'bannerData']);
+Route::post('/Historia/bannerData', [HistoriaController::class, 'bannerData']);
+Route::post('/Valores/bannerData', [ValoresController::class, 'bannerData']);

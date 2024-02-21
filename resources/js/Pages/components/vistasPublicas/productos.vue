@@ -1,19 +1,19 @@
 <script>
 import Navbar from './Navbar.vue';
 import Footer from './Footer.vue';
-import ImgProductos from './ImgProductos.vue';
 import { ref } from 'vue';
 import DataView from 'primevue/dataview';
 import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions';
+import ImgPrincipal from './ImgPrincipal.vue';
 
 export default {
     components: {
-        Navbar,
-        Footer,
-        DataView,
-        DataViewLayoutOptions,
-        ImgProductos,
-    },
+    Navbar,
+    Footer,
+    DataView,
+    DataViewLayoutOptions,
+    ImgPrincipal
+},
     setup() {
         const products = ref([]);
         const layout = ref('grid');
@@ -65,7 +65,7 @@ export default {
         </div>
     </div>
 
-    <ImgProductos />
+    <ImgPrincipal :controllerName="'/ImgProduct'" />
 
     <DataView v-if="products.length > 0" :value="products" :layout="layout">
         <template #header>
