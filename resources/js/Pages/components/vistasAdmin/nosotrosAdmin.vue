@@ -9,7 +9,7 @@ import EstructuraTextos from '../estructuras/estructuraTextos.vue';
 
 <template>
     <TabView ref="tabview1" class="p-3">
-        <TabPanel header="Imagen Principal de Contactanos">
+        <TabPanel header="Imagen Principal de Nosotros">
             <p>Este componente solo aceptara el <span style="color: red; font-weight: bold; ">Primer</span> elemento del
                 registro</p>
             <EstructuraImgITI :Titulo="'Titulo que llevara el apartado en la vista:'" :loadDataUrl="'/ImgNosotros/bannerData'" :registerBannerUrl="'/ImgNosotros/registrarBanner'"
