@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         cargarTexto() {
-            axios.post('/Histor').then((response) => {
+            axios.post('/Vis').then((response) => {
                 this.texto = response.data;
             }).catch((error) => {
                 console.log(error);
@@ -32,28 +32,12 @@ export default {
 @import url('https://fonts.cdnfonts.com/css/futura-std-4');
 @import url('https://db.onlinewebfonts.com/c/e8d88139fe7f412e3a34d99df3552869?family=ITC+Handel+Gothic+Arabic+Bold');
 
-.texto-wrapper {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    /* Asegurarse de tener un margen uniforme */
-    padding: 0 50px;
-    /* Ajusta este valor según necesites */
-    text-align: center;
-    /* Centra el texto horizontalmente */
-    max-width: 800px;
-    /* Ajusta este valor según necesites */
-    margin-left: auto;
-    /* Centra el .texto-wrapper en la página */
-    margin-right: auto;
-    /* Centra el .texto-wrapper en la página */
-}
-
 .titulo {
     font-size: 40px;
     color: black;
-    font-family: "ITC Handel Gothic Arabic Bold", sans-serif;
+    font-family: "ITC Handel Gothic Arabic Bold";
     margin-bottom: 25px;
-    display: block;
+    display: inline-block;
     border-bottom: 5px solid #f07c34;
     padding-bottom: 5px;
     text-transform: uppercase;
@@ -64,10 +48,8 @@ export default {
     line-height: 1.8;
     color: #333;
     font-family: 'Futura Std', sans-serif;
-    display: block;
     font-style: normal;
 }
-
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
@@ -79,4 +61,5 @@ export default {
     .contenido {
         display: block;
     }
-}</style>
+}
+</style>
