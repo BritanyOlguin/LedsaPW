@@ -21,6 +21,7 @@ use App\Http\Controllers\MisionController;
 use App\Http\Controllers\VisionController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\ValoresController;
+use App\Http\Controllers\ImgValoresController;
 
 // Rutas de vistas
 // Rutas que no incluyen el middleware de autenticación
@@ -69,6 +70,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         'Vision' => VisionController::class,
         'Historia' => HistoriaController::class,
         'Valores' => ValoresController::class,
+        'ImgValores' => ImgValoresController::class,
     ];
 
     foreach ($controllers as $prefix => $controller) {
@@ -89,6 +91,7 @@ Route::post('/ImgNosotro', [ImgNosotrosController::class, 'bannerDataNew']);
 Route::post('/Mis', [MisionController::class, 'bannerDataNew']);
 Route::post('/Vis', [VisionController::class, 'bannerDataNew']);
 Route::post('/Histor', [HistoriaController::class, 'bannerDataNew']);
+Route::post('/ImgVal', [ImgValoresController::class, 'bannerDataNew']);
 
 Route::post('/CarruselHome/bannerData', [CarruselHomeController::class, 'bannerData']);
 Route::post('/Productos/bannerData', [ProductosController::class, 'bannerData']);
@@ -105,3 +108,4 @@ Route::post('/Mision/bannerData', [MisionController::class, 'bannerData']);
 Route::post('/Vision/bannerData', [VisionController::class, 'bannerData']);
 Route::post('/Historia/bannerData', [HistoriaController::class, 'bannerData']);
 Route::post('/Valores/bannerData', [ValoresController::class, 'bannerData']);
+Route::post('/ImgValores/bannerData', [ImgValoresController::class, 'bannerData']);
