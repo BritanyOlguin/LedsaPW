@@ -62,7 +62,7 @@ export default {
 .contenido {
     font-size: 17px;
     line-height: 1.8;
-    color: #333;
+    color: black;
     font-family: 'Futura Std', sans-serif;
     text-align: justify;
     text-justify: inter-word;
