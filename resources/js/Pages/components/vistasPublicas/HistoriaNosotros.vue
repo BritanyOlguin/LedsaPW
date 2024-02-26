@@ -64,6 +64,8 @@ export default {
     line-height: 1.8;
     color: #333;
     font-family: 'Futura Std', sans-serif;
+    text-align: justify;
+    text-justify: inter-word;
     display: block;
     font-style: normal;
 }
@@ -79,4 +81,5 @@ export default {
     .contenido {
         display: block;
     }
-}</style>
+}
+</style>
