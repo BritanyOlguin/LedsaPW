@@ -5,6 +5,7 @@ import ImgPrincipal from './ImgPrincipal.vue';
 import HistoriaNosotros from './HistoriaNosotros.vue';
 import MisionNosotros from './MisionNosotros.vue';
 import VisionNosotros from './VisionNosotros.vue';
+import valoresNosotros from './valoresNosotros.vue';
 
 </script>
 
@@ -13,7 +14,13 @@ import VisionNosotros from './VisionNosotros.vue';
     <ImgPrincipal :controllerName="'/ImgNosotro'" />
     <HistoriaNosotros />
     <MisionNosotros />
-    <!-- <VisionNosotros /> -->
+    <br>
+    <br>
+    <VisionNosotros />
+    <br>
+    <br>
+    <valoresNosotros />
+    <br>
     <br>
     <Footer />
 </template>

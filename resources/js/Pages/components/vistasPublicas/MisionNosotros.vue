@@ -102,6 +102,10 @@ export default {
     font-size: 30px;
     font-family: "ITC Handel Gothic Arabic Bold", sans-serif;
     text-transform: uppercase;
+    display: inline-block;
+    border-bottom: 5px solid #f07c34;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .card-content p {

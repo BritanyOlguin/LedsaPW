@@ -55,7 +55,7 @@ export default {
     margin-bottom: 25px;
     display: block;
     border-bottom: 5px solid #f07c34;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
     text-transform: uppercase;
 }
 
