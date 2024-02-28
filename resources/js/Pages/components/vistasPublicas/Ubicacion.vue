@@ -6,7 +6,7 @@ export default {
 
     data() {
         return {
-            direccion: 'Camino viejo, Calle del Carmen SN, La Piedad, 76146 Qro.',
+            direccion: 'Camino viejo al Carmen SN, La Piedad, el Marqués, Qro. 76246',
             datos: [],
             showMapModal: false,
         };
