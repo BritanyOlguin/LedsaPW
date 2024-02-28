@@ -125,6 +125,7 @@ export default {
     text-decoration: none;
     margin-bottom: 5px;
     /* Espacio entre los enlaces */
+    cursor: pointer;
 }
 
 .footer-column.links a:hover {

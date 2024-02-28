@@ -31,7 +31,7 @@ export default {
 
 <template>
     <div class="align-items-center justify-content-center">
-        <Card class="responsive-card" @click="redirectToPage">
+        <Card class="responsive-card" @click="redirectToPage" :style="{ cursor: 'pointer' }">
             <template #header>
                 <div v-for="datosCard in banner">
                     <img :src="'/storage/' + datosCard.imagen" alt="" />

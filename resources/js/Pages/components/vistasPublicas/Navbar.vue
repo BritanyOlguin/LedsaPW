@@ -112,6 +112,7 @@ export default {
 
 .estilos-tabmenu .p-tabmenu-nav li {
     margin-right: 50px;
+    cursor: pointer;
 }
 
 .estilos-tabmenu .p-tabmenu-nav li a:hover {
@@ -167,6 +168,7 @@ export default {
     list-style: none;
     padding: 0;
     text-align: center;
+    cursor: pointer;
 }
 
 .full-screen-menu .menu-items li {

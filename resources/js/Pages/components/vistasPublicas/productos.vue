@@ -76,7 +76,7 @@ export default {
 
         <template #list="{ items }" class="list-section">
             <div class="grid grid-nogutter">
-                <div v-for="item in items" :key="item.id" @click="openPDFModal(item.pdf, item.nombre)" class="col-12">
+                <div v-for="item in items" :key="item.id" @click="openPDFModal(item.pdf, item.nombre)" class="col-12" style="cursor: pointer;">
                     <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4"
                         :class="{ 'border-top-1 surface-border': item.id !== 0 }">
                         <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
@@ -85,7 +85,7 @@ export default {
                             class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                             <div class="flex flex-column align-items-center sm:align-items-start gap-3">
                                 <p class="text-2xl font-bold text-900">{{ item.nombre }}</p>
-                                <p>{{ item.contenido }}</p>
+                                <p style="text-align: justify;">{{ item.contenido }}</p>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ export default {
                             </div>
                             <div class="content-container">
                                 <p class="text-2xl font-bold">{{ item.nombre }}</p>
-                                <p>{{ item.contenido }}</p>
+                                <p style="text-align: justify;">{{ item.contenido }}</p>
                             </div>
                         </div>
                     </div>
@@ -213,6 +213,7 @@ export default {
     align-items: center;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .image-container {
