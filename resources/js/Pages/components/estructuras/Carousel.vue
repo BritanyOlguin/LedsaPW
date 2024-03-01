@@ -48,12 +48,12 @@ export default {
 
         const handleTouchStart = (event) => {
             startX = event.touches[0].clientX;
-            autoPlay();
+            setupAutoPlay();
         };
 
         const handleTouchMove = (event) => {
             endX = event.touches[0].clientX;
-            autoPlay();
+            setupAutoPlay();
         };
 
         const handleTouchEnd = () => {
@@ -93,7 +93,7 @@ export default {
 
         const goToSlide = (index) => {
             currentSlide.value = index + 1;
-            autoPlay();  // Reiniciar el temporizador de reproducción automática
+            setupAutoPlay();  // Reiniciar el temporizador de reproducción automática
         };
 
         // auto play
@@ -107,15 +107,6 @@ export default {
         const pauseAutoPlay = () => {
             clearInterval(intervalId.value);
         };
-
-        // Escuchar cambios en la visibilidad de la página
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                pauseAutoPlay();  // Pausar cuando la pestaña está inactiva
-            } else {
-                autoPlay();       // Reanudar cuando la pestaña está activa
-            }
-        });
 
         const setupAutoPlay = () => {
             if (props.startAutoPlay) {
@@ -133,6 +124,15 @@ export default {
         const updateSlideCount = () => {
             getSlideCount.value = props.slides.length; // Usamos la longitud del prop slides 
         };
+
+        // Escuchar cambios en la visibilidad de la página
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                pauseAutoPlay();  // Pausar cuando la pestaña está inactiva
+            } else {
+                setupAutoPlay();       // Reanudar cuando la pestaña está activa
+            }
+        });
 
         onMounted(() => {
             nextTick(() => {
