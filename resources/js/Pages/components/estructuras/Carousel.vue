@@ -1,4 +1,3 @@
-
 <template>
     <div class="carousel" ref="rootRef" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
         @touchend="handleTouchEnd">
@@ -14,26 +13,32 @@
 </template>
 
 <script>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, watch } from 'vue';
 
 export default {
     props: {
-        startAutoPlay: {
-            type: Boolean,
-            default: true
-        },
+        startAutoPlay: Boolean,
         timeout: {
             type: Number,
-            default: 5000
+            default: 5000,
         },
-        pagination: {
-            type: Boolean,
-            default: true
-        },
+        pagination: Boolean,
         slides: {
             type: Array,
-            required: true
-        }
+            required: true,
+        },
+    },
+
+    mounted() {
+        axios.get('/api/configuraciones')
+            .then(response => {
+                const { pagination, startAutoPlay, timeout } = response.data;
+                this.pagination = pagination;
+                this.startAutoPlay = startAutoPlay;
+                this.timeout = timeout;
+                this.autoPlay(); // Reiniciar el carrusel con las nuevas configuraciones
+            })
+            .catch(error => console.error("Error al cargar configuraciones:", error));
     },
 
     setup(props) {
@@ -96,7 +101,7 @@ export default {
             clearInterval(intervalId.value);
             intervalId.value = setInterval(() => {
                 nextSlide();
-            }, timeoutDuration.value);
+            }, props.timeout);
         };
 
         const pauseAutoPlay = () => {
@@ -112,9 +117,18 @@ export default {
             }
         });
 
-        if (autoPlayEnabled.value) {
-            autoPlay();
-        }
+        const setupAutoPlay = () => {
+            if (props.startAutoPlay) {
+                autoPlay();
+            } else {
+                pauseAutoPlay();
+            }
+        };
+
+        // Watch for changes on startAutoPlay prop to enable/disable autoplay
+        watch(() => props.startAutoPlay, (newValue) => {
+            setupAutoPlay();
+        });
 
         const updateSlideCount = () => {
             getSlideCount.value = props.slides.length; // Usamos la longitud del prop slides 
@@ -123,8 +137,8 @@ export default {
         onMounted(() => {
             nextTick(() => {
                 updateSlideCount();
+                setupAutoPlay();
             });
-            autoPlay();
         });
 
         return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide, paginationEnabled, handleTouchStart, handleTouchMove, handleTouchEnd };

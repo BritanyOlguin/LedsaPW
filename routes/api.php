@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConfiguracionController;
+
+Route::post('/configuraciones', [ConfiguracionController::class, 'guardar']);
+Route::get('/configuraciones', [ConfiguracionController::class, 'obtener']);
+
 
 /*
 |--------------------------------------------------------------------------

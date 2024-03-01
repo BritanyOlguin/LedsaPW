@@ -26,10 +26,11 @@ export default {
         Carousel,
         Slide,
     },
-    props:{
+    props: {
         controllerName: String
     },
     mounted() {
+        this.cargarConfiguraciones();
         this.cargarBanner();
     },
 
@@ -39,11 +40,15 @@ export default {
                 image.id = index + 1;
             });
         },
-
-        updateCarouselSettings(settings) {
-            this.pagination = settings.pagination;
-            this.startAutoPlay = settings.startAutoPlay;
-            this.timeout = settings.timeout;
+        cargarConfiguraciones() {
+            axios.get('/api/configuraciones')
+                .then(response => {
+                    const { pagination, startAutoPlay, timeout } = response.data;
+                    this.pagination = pagination === 1; // Convertir de número a booleano si es necesario
+                    this.startAutoPlay = startAutoPlay === 1; // Convertir de número a booleano si es necesario
+                    this.timeout = timeout;
+                })
+                .catch(error => console.error("Error al cargar configuraciones:", error));
         },
 
         cargarBanner() {
@@ -57,13 +62,12 @@ export default {
         },
     },
     data() {
-        const id = 'carruselPrincipal'
         return {
             banner: [],
             isBannerLoaded: false,
-            pagination: localStorage.getItem(id + 'pagination') === 'true' || false,
-            startAutoPlay: localStorage.getItem(id + 'startAutoPlay') === 'true' || false,
-            timeout: Number(localStorage.getItem(id + 'timeout')) || 5000
+            pagination: false,
+            startAutoPlay: false,
+            timeout: 5000,
         };
     },
 };
@@ -71,8 +75,8 @@ export default {
 
 <template>
     <!-- Carrusel dinamico -->
-    <Carousel v-if="isBannerLoaded" :pagination="pagination" :startAutoPlay="startAutoPlay"
-        :timeout="timeout" :slides="banner" class="carousel" v-slot="{ currentSlide }">
+    <Carousel v-if="isBannerLoaded" :pagination="pagination" :startAutoPlay="startAutoPlay" :timeout="timeout"
+        :slides="banner" class="carousel" v-slot="{ currentSlide }">
         <Slide v-for="datosCard in banner" :key="datosCard">
             <div v-show="currentSlide === datosCard.id" class="slide-info">
                 <img :src="'/storage/' + datosCard.imagen" alt="" />
