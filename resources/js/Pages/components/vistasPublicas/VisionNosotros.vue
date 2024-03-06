@@ -5,7 +5,12 @@
                 <img :src="'/storage/' + datosCard.imagen" alt="Imagen" />
             </div>
             <div class="card-content" v-if="texto.length > index">
-                <h2>{{ texto[index].titulo }}</h2>
+                <h2>
+                    <!-- Utilizar el método dividirTitulo para procesar el título -->
+                    <span>{{ dividirTitulo(texto[index].titulo).parte1 }}</span>
+                    <br>
+                    <span>{{ dividirTitulo(texto[index].titulo).parte2 }}</span>
+                </h2>
                 <p>{{ texto[index].contenido }}</p>
             </div>
         </div>
@@ -34,6 +39,13 @@ export default {
                 console.log(error);
             });
         },
+        dividirTitulo(titulo) {
+            const division = titulo.split(' ');
+            const parte1 = division.slice(0, 2).join(' ');
+            const parte2 = division.slice(2).join(' ');
+
+            return { parte1, parte2 };
+        }
     },
     data() {
         return {
@@ -55,14 +67,17 @@ export default {
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
-    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho */
+    width: 100%;
+    /* Asegúrate de que el contenedor ocupe todo el ancho */
 }
 
 .card-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center; /* Añadido para centrar las tarjetas */
-    flex-direction: row-reverse; /* Cambia el orden de los elementos */
+    justify-content: center;
+    /* Añadido para centrar las tarjetas */
+    flex-direction: row-reverse;
+    /* Cambia el orden de los elementos */
 }
 
 .card-img,
@@ -89,10 +104,10 @@ export default {
     background: white;
     padding: 20px;
     position: relative;
-    right: -20px; /* Ajustado para mover el contenido hacia la derecha */
+    right: -20px;
+    /* Ajustado para mover el contenido hacia la derecha */
 }
 
-.card-content h2,
 .card-content p {
     margin: 0;
     padding: 10px;
@@ -118,7 +133,7 @@ export default {
     .card-wrapper {
         flex-direction: column;
     }
-    
+
     .card-img {
         width: 100%;
         height: 244px;
@@ -129,13 +144,17 @@ export default {
     }
 
     .card-content {
-        width: calc(100% - 80px); /* Ancho ajustado */
-        height: auto; /* Alto ajustado */
+        width: calc(100% - 80px);
+        /* Ancho ajustado */
+        height: auto;
+        /* Alto ajustado */
         max-width: none;
         position: relative;
         top: -20px;
-        margin: 0 auto; /* Centrado horizontalmente */
-        left: 0; /* Reset para evitar desplazamiento innecesario */
+        margin: 0 auto;
+        /* Centrado horizontalmente */
+        left: 0;
+        /* Reset para evitar desplazamiento innecesario */
     }
 }
 </style>
